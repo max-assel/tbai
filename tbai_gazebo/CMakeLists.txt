@@ -15,6 +15,7 @@ find_package(catkin REQUIRED COMPONENTS
   tbai_core
   ocs2_robotic_tools
   std_msgs
+  pinocchio
 )
 
 find_package(gazebo REQUIRED)
@@ -31,6 +32,21 @@ include_directories(
   ${pinocchio_INCLUDE_DIRS}
 )
 
+## State estimator
+add_library(StateEstimator
+  src/legged_state_estimator/robot_model.cpp
+  src/legged_state_estimator/legged_state_estimator.cpp
+  src/legged_state_estimator/legged_state_estimator_settings.cpp
+  src/legged_state_estimator/contact_estimator.cpp
+  src/legged_state_estimator/inekf/inekf_state.cpp
+  src/legged_state_estimator/inekf/inekf.cpp
+  src/legged_state_estimator/inekf/lie_group.cpp
+  src/legged_state_estimator/inekf/noise_params.cpp
+  src/legged_state_estimator/inekf/observations.cpp
+)
+target_link_libraries(StateEstimator ${catkin_LIBRARIES})
+target_compile_options(StateEstimator PRIVATE ${OCS2_CXX_FLAGS})
+
 ## Joint controller plugin
 add_library(JointController src/JointController.cpp)
 target_link_libraries(JointController ${catkin_LIBRARIES}) 
@@ -39,7 +55,7 @@ target_compile_options(JointController PRIVATE ${OCS2_CXX_FLAGS})
 ## RBD state plugin
 # Anymal state estimator plugin
 add_library(StatePublisher src/StatePublisher.cpp)
-target_link_libraries(StatePublisher ${gazebo_LIBRARIES} ${catkin_LIBRARIES})
+target_link_libraries(StatePublisher ${gazebo_LIBRARIES} ${catkin_LIBRARIES} StateEstimator)
 target_compile_options(StatePublisher PRIVATE ${OCS2_CXX_FLAGS})
 
 # Anymal contact sensor

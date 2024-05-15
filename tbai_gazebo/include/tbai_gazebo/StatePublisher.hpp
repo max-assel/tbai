@@ -1,6 +1,7 @@
 #pragma once
 
 #include <vector>
+#include <memory>
 
 #include <Eigen/Dense>
 #include <gazebo/common/common.hh>
@@ -9,6 +10,8 @@
 #include <ros/ros.h>
 #include <std_msgs/Bool.h>
 #include <tbai_core/Types.hpp>
+
+#include "tbai_gazebo/legged_state_estimator/legged_state_estimator.hpp"
 
 namespace gazebo {
 class StatePublisher : public ModelPlugin {
@@ -37,6 +40,7 @@ class StatePublisher : public ModelPlugin {
     bool firstUpdate_ = true;
 
     double lastYaw_ = 0.0;
+    double lastYawIMU_ = 0.0;
 
     std::array<bool, 4> contactFlags_;
     std::array<ros::Subscriber, 4> contactSubscribers_;
@@ -46,6 +50,15 @@ class StatePublisher : public ModelPlugin {
     tbai::matrix3_t lastOrientationBase2World_;
     tbai::vector3_t lastPositionBase_;
     common::Time lastSimTime_;
+
+    // State estimator
+    std::unique_ptr<legged_state_estimator::LeggedStateEstimator> stateEstimatorPtr_;
+
+    // Stuff to simulate the IMU
+    bool IMUFistUpdate_ = true;
+    tbai::matrix3_t lastOrientationBase2WorldIMU_;
+    tbai::vector3_t lastPositionBaseIMU_;
+    tbai::vector3_t lastVelocityBaseIMU_;
 };
 
 }  // namespace gazebo

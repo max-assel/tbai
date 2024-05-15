@@ -40,6 +40,19 @@ inline vector3_t mat2rpy(const matrix3_t &R) {
 }
 
 /**
+ * @brief Convert a 3x3 rotation matrix to roll-pitch-yaw euler angles, assume last yaw angle
+ *
+ * @param R : rotation matrix
+ * @param lastYaw : previous yaw angle
+ * @return vector3_t : roll-pitch-yaw euler angles
+ */
+inline vector3_t mat2rpy(const matrix3_t &R, scalar_t lastYaw) {
+    vector3_t rpy = pinocchio::rpy::matrixToRpy(R);
+    rpy.z() = ocs2::moduloAngleWithReference(rpy.z(), lastYaw);
+    return rpy;
+}
+
+/**
  * @brief Convert a 3x3 rotation matrix to ocs2-style rpy euler angles, assume last yaw angle
  *
  * @param R : rotation matrix

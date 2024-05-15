@@ -17,6 +17,7 @@
 
     <!-- Upload config path to ROS param server -->
     <param name="tbai_config_path" type="string" value="$(arg tbai_config_path)"/>
+    <param name="description_file" type="string" value="$(arg description_file)"/>
 
     <!-- Launch gazebo -->
     <include file="$(find tbai_gazebo)/launch/world.launch">

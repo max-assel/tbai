@@ -12,6 +12,8 @@
 #include <tbai_core/config/YamlConfig.hpp>
 #include <tbai_msgs/RbdState.h>
 
+#include "tbai_gazebo/legged_state_estimator/legged_state_estimator_settings.hpp"
+
 namespace gazebo {
 
 /*********************************************************************************************************************/
@@ -53,6 +55,25 @@ void StatePublisher::Load(physics::ModelPtr robot, sdf::ElementPtr sdf) {
         contactSubscribers_[i] = nh.subscribe<std_msgs::Bool>(contactTopics[i], 1, callback);
     }
 
+    // Initialize state estimator
+    std::string urdfPath;
+    ros::param::get("/description_file", urdfPath);
+    std::cout << "[Debug] Loading state estimator with URDF: " << urdfPath << "\n";
+    std::string urdf;
+    ros::param::get("robot_description", urdf);
+    auto settings = legged_state_estimator::LeggedStateEstimatorSettings::AnymalD(urdf, period_);
+    settings.contact_estimator_settings.contact_force_covariance_alpha = 10.0;
+    // settings.dynamic_contact_estimation = True
+    settings.contact_position_noise = 0.1 ;;
+    settings.contact_rotation_noise = 0.1 ;
+    settings.lpf_gyro_accel_cutoff_frequency = 250;
+    settings.lpf_lin_accel_cutoff_frequency  = 250;
+    settings.lpf_dqJ_cutoff_frequency  = 10;
+    settings.lpf_ddqJ_cutoff_frequency = 5;
+    settings.lpf_tauJ_cutoff_frequency = 10;
+    stateEstimatorPtr_ = std::make_unique<legged_state_estimator::LeggedStateEstimator>(settings);
+
+    std::cout << "Done loading state estimator\n" << std::endl;
     ROS_INFO_STREAM("[StatePublisher] Loaded StatePublisher plugin");
 }  // namespace gazebo
 
@@ -163,9 +184,103 @@ void StatePublisher::OnUpdate() {
     lastPositionBase_ = basePosition;
 
     // Publish message
-    statePublisher_.publish(message);
+    // statePublisher_.publish(message);
 
     lastSimTime_ = currentTime;
+
+
+    // Data for state estimator
+    using vector_t = Eigen::VectorXd;
+    using vector3_t = Eigen::Vector3d;
+
+    // TODO:
+    // vector3_t imu_gyro_raw = {0.0, 0.0, 0.0};
+    vector3_t imu_gyro_raw = angularVelocityBase;
+
+    if(IMUFistUpdate_) {
+        lastVelocityBaseIMU_ = linearVelocityBase;
+        vector3_t basePositionIMU(basePosition[0], basePosition[1], basePosition[2]);
+        stateEstimatorPtr_->init(basePositionIMU, baseQuaternion.coeffs(), linearVelocityWorld, vector3_t::Zero(), vector3_t::Zero());
+        IMUFistUpdate_ = false;
+    }
+
+    imu_gyro_raw[1] *= 1.0;
+    imu_gyro_raw[2] *= 1.0;
+
+    vector3_t imu_lin_accel_raw = (linearVelocityBase - lastVelocityBaseIMU_) / dt;
+    imu_lin_accel_raw = R_world_base * imu_lin_accel_raw;
+
+    imu_lin_accel_raw[1] *= 1.0;
+    imu_lin_accel_raw[2] *= 1.0;
+    imu_lin_accel_raw[2] += 9.81;
+    imu_lin_accel_raw = R_base_world * imu_lin_accel_raw;
+
+    vector_t qJ(12);
+    for(int i = 0; i < 12; i++) {
+        qJ[i] = jointAngles[i];
+    }
+
+    vector_t dqJ(12);
+    for(int i = 0; i < 12; i++) {
+        dqJ[i] = jointVelocities[i];
+    }
+
+    std::array<bool, 4> contactFlags;
+    for(int i = 0; i < 4; i++) {
+        contactFlags[i] = contactFlags_[i];
+    }
+
+    // Update state estimator
+    auto t1 = std::chrono::high_resolution_clock::now();
+    stateEstimatorPtr_->update(imu_gyro_raw, imu_lin_accel_raw, qJ, dqJ, contactFlags);
+    auto t2 = std::chrono::high_resolution_clock::now();
+
+    auto duration = std::chrono::duration_cast<std::chrono::microseconds>(t2 - t1) / 1e3;
+    std::cout << "State estimator update time: " << duration.count() << " ms" << std::endl;
+
+    lastVelocityBaseIMU_ = linearVelocityBase;
+
+    // Compute current and estimated rpy
+    auto rpyEst = tbai::core::mat2rpy(stateEstimatorPtr_->getBaseRotationEstimate());
+    auto rpyCur = tbai::core::mat2rpy(R_world_base);
+    auto rpyEstOcs2 = tbai::core::mat2oc2rpy(stateEstimatorPtr_->getBaseRotationEstimate(), lastYawIMU_);
+    lastYawIMU_ = rpyEstOcs2[2];
+
+    std::cout << "Current rpy: " << rpyCur.transpose() << std::endl;
+    std::cout << "Estimated rpy: " << rpyEst.transpose() << std::endl;
+
+    // Compute estimated and current position
+    auto posEst = stateEstimatorPtr_->getBasePositionEstimate();
+    auto posCur = basePosition;
+
+    std::cout << "Current position: " << posCur.transpose() << std::endl;
+    std::cout << "Estimated position: " << posEst.transpose() << std::endl;
+    std::cout << std::endl;
+
+    auto angEst = stateEstimatorPtr_->getBaseAngularVelocityEstimateLocal();
+    auto linEst = stateEstimatorPtr_->getBaseLinearVelocityEstimateLocal();
+
+    // Base orientation - Euler zyx as {roll, pitch, yaw}
+    message.rbd_state[0] = rpyEstOcs2[0];
+    message.rbd_state[1] = rpyEstOcs2[1];
+    message.rbd_state[2] = rpyEstOcs2[2];
+
+    // Base position
+    message.rbd_state[3] = posEst[0];
+    message.rbd_state[4] = posEst[1];
+    message.rbd_state[5] = posEst[2];
+
+    // Base angular velocity
+    message.rbd_state[6] = angEst[0];
+    message.rbd_state[7] = angEst[1];
+    message.rbd_state[8] = angEst[2];
+
+    // Base linear velocity
+    message.rbd_state[9] = linEst[0];
+    message.rbd_state[10] = linEst[1];
+    message.rbd_state[11] = linEst[2];
+
+    statePublisher_.publish(message);
 }
 
 GZ_REGISTER_MODEL_PLUGIN(StatePublisher);

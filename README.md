@@ -10,8 +10,8 @@ Towards better athletic intelligence
  ┣ 📂tbai_mpc_blind            # Blind NMPC controller [1]
  ┣ 📂tbai_rl_perceptive        # Perceptive RL controller [2]
  ┣ 📂tbai_rl_blind             # Blind RL controller [2]
- ┣ 📂tbai_dtc_perceptive       # Perceptive DTC controller [3]
- ┣ 📂tbai_dtc_blind            # Blind DTC controller [3]
+ ┣ 📂tbai_dtc                  # DTC controller (perceptive) [3]
+ ┣ 📂tbai_joe                  # Perceptive NMPC controller with NN-based tracking controller [1],[3]
 
  [1] Perceptive Locomotion through Nonlinear Model Predictive Control
      https://arxiv.org/abs/2208.08373
@@ -24,34 +24,53 @@ Towards better athletic intelligence
 ## Perceptive MPC
 
 
-https://github.com/lnotspotl/tbai/assets/82883398/ced1724a-73b3-4aa4-86bd-f9dfa2160ca8
+
+https://github.com/lnotspotl/tbai/assets/82883398/f451c12d-7525-4606-b722-726f63d852ca
+
+
 
 
 ## Blind MPC
 
 
-https://github.com/lnotspotl/tbai/assets/82883398/f1ce4b7e-87ed-49a7-acb7-9fe580bbdcea
+
+https://github.com/lnotspotl/tbai/assets/82883398/1bf86da1-a3d4-44db-88c4-877ec78b06cc
+
+
 
 
 ## Perceptive RL
 
 
-https://github.com/lnotspotl/tbai/assets/82883398/ff93c5c5-3129-459f-b1b4-30c9cb928301
+
+https://github.com/lnotspotl/tbai/assets/82883398/7f6bdefa-4299-454b-a0ef-55e463e0c88d
+
+
 
 
 ## Blind RL
 
 
-https://github.com/lnotspotl/tbai/assets/82883398/43354e1b-b451-4fed-a09a-af8a49fe80d0
+https://github.com/lnotspotl/tbai/assets/82883398/ebc2d90d-5c03-4207-a868-2e9436c140d4
 
 
-## Perceptive DTC
 
-## Blind DTC
+## Dtc
+
+
+https://github.com/lnotspotl/tbai/assets/82883398/6cf672db-b737-4724-a6da-afa0c8dd19d5
+
+
+## Joe
+
+
+https://github.com/lnotspotl/tbai/assets/82883398/e3455dd3-10e8-41da-bb02-87fbdf3de041
+
 
 ## System architecture
 
-![architecture](https://github.com/lnotspotl/tbai/assets/82883398/3a21ead9-75dd-4e27-9a8c-c59526a45ae5)
+![overview_01](https://github.com/lnotspotl/tbai/assets/82883398/2c17f08d-6994-4982-8739-2b8246dfcb32)
+
 
 ## Installing libtorch C++
 There are two steps to installing `libtorch`. First, you need to download a suitable `libtorch` version.
@@ -78,3 +97,23 @@ Your `dependencies` folder should not look as follows:
   <img src="https://github.com/lnotspotl/tbai/assets/82883398/657d8681-1abd-4dae-b4c2-15347ed542fd" />
 </p>
 That's it. You should now be able to compile the entire project. Enjoy 🤗
+
+## Credits
+This project stands on the shoulders of giants.
+None of this would have been possible were it not for many amazing open-source projects.
+Here are a couple that most inspiration was drawn from and that were instrumental during the development:
+
+- https://github.com/leggedrobotics/ocs2
+- https://github.com/qiayuanl/legged_control
+- https://github.com/leggedrobotics/legged_gym
+- https://github.com/leggedrobotics/rsl_rl
+- https://github.com/ANYbotics/elevation_mapping
+- https://github.com/leggedrobotics/elevation_mapping_cupy
+- https://github.com/bernhardpg/quadruped_locomotion
+- https://github.com/stack-of-tasks/pinocchio
+- https://x-io.co.uk/open-source-imu-and-ahrs-algorithms/
+- https://github.com/mayataka/robotoc
+- https://github.com/mayataka/legged_state_estimator
+- hundreds of others ...
+
+Thank you all 🤗

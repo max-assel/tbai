@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.0.2)
-project(tbai_dtc)
+project(tbai_joe)
 
 ## C++17 is a requirement
 add_compile_options(-std=c++17)
@@ -54,7 +54,7 @@ include_directories(
 )
 
 add_library(${PROJECT_NAME}
-  src/DtcController.cpp
+  src/JoeController.cpp
 )
 target_link_libraries(${PROJECT_NAME}
     ${catkin_LIBRARIES}

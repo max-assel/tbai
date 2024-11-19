@@ -22,10 +22,13 @@
     <arg name="z" default="3.0"/>
 
     <!-- Joystick node -->
-    <arg name="joystick_dev" default="/dev/input/js0"/>
-    <node name="joy_node" pkg="joy" type="joy_node" output="screen">
-        <param name="dev" value="$(arg joystick_dev)"/>
-    </node>
+    <arg name="joystick_control" default="false" />
+    <group if="$(arg joystick_control)">
+      <arg name="joystick_dev" default="/dev/input/js0"/>
+      <node name="joy_node" pkg="joy" type="joy_node" output="screen">
+          <param name="dev" value="$(arg joystick_dev)"/>
+      </node>
+    </group>
 
     <!-- Upload config path to ROS param server -->
     <param name="tbai_config_path" type="string" value="$(arg tbai_config_path)"/>

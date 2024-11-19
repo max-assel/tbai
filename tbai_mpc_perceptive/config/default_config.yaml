@@ -38,7 +38,7 @@ anymal_d:
       joints: *jn
 
 reference_generator:
-  type: "twist"
+  type: "joystick"
 
   joystick:
     topic: "joy"

@@ -124,7 +124,7 @@ sudo apt install libmpfr-dev
 
 # Download project
 mkdir -p <your-file>/src && cd <your-file> && catkin init && cd src
-git clone git@github.com:lnotspotl/tbai.git --recursive
+git clone git@github.com:max-assel/tbai.git --recursive
 
 # Install other dependencies using rosdep
 cd .. && rosdep install --from-paths src --ignore-src -r -y && cd src/tbai

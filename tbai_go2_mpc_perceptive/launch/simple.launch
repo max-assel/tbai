@@ -47,7 +47,7 @@
     <!-- Launch simple node -->
     <node name="simple" pkg="tbai_go2_mpc_perceptive" type="simple" output="screen"/>
 
-    <node pkg="tbai_mpc" type="anymal_mpc_node" name="anymal_mpc_node" output="screen"/>
+    <node pkg="tbai_mpc" type="go2_mpc_node" name="go2_mpc_node" output="screen"/>
 
     <node pkg="ocs2_anymal_commands" type="gait_command_node" name="gait_command_node"
           output="screen" launch-prefix="gnome-terminal --"/>

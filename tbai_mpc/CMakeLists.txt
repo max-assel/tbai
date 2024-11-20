@@ -74,3 +74,12 @@ target_link_libraries(anymal_mpc_node
   ${catkin_LIBRARIES}
 )
 target_compile_options(anymal_mpc_node PRIVATE ${OCS2_CXX_FLAGS})
+
+
+add_executable(go2_mpc_node
+  src/MpcNode.cpp
+)
+target_link_libraries(go2_mpc_node
+  ${catkin_LIBRARIES}
+)
+target_compile_options(go2_mpc_node PRIVATE ${OCS2_CXX_FLAGS})

@@ -126,7 +126,7 @@ sudo apt install libmpfr-dev
 mkdir -p <your-file>/src && cd <your-file> && catkin init && cd src
 git clone git@github.com:max-assel/tbai.git --recursive
 
-# Install other dependencies using rosdep
+# Install other dependencies using rosdep (but make sure to reject the ros-noetic-pinocchio and ros-noetic-hpp-fcl installs, this will mess up legged_software install)
 cd .. && rosdep install --from-paths src --ignore-src -r -y && cd src/tbai
 
 # !! Now install libtorch by following the installation guideline above

@@ -46,7 +46,7 @@ int main(int argc, char *argv[]) {
                           "Failed to get parameter /sqp_settings_file");
         const auto sqpSettings = ocs2::sqp::loadSettings(sqpSettingsFile);
         auto mpcPtr = switched_model::getSqpMpc(*go2Interface, mpcSettings, sqpSettings);
-        switched_model::go2MpcNode(nodeHandle, *go2Interface, std::move(mpcPtr));
+        switched_model::quadrupedMpcNode(nodeHandle, *go2Interface, std::move(mpcPtr));
     }
 
     if (go2Interface->modelSettings().algorithm_ == switched_model::Algorithm::DDP) 
@@ -54,7 +54,7 @@ int main(int argc, char *argv[]) {
         ROS_INFO_STREAM("[MpcNode] Using DDP MPC");
         const auto ddpSettings = ocs2::ddp::loadSettings(taskSettingsFile);
         auto mpcPtr = switched_model::getDdpMpc(*go2Interface, mpcSettings, ddpSettings);
-        switched_model::go2MpcNode(nodeHandle, *go2Interface, std::move(mpcPtr));
+        switched_model::quadrupedMpcNode(nodeHandle, *go2Interface, std::move(mpcPtr));
     }
 
     return EXIT_SUCCESS;

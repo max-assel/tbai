@@ -1,6 +1,14 @@
 robot_name: 'go2' # 'anymal_d'
 
-joint_names: &jn ["FL_hip_joint", "FL_thigh_joint", "FL_calf_joint", "FR_hip_joint", "FR_thigh_joint", "FR_calf_joint", "RL_hip_joint", "RL_thigh_joint", "RL_calf_joint", "RR_hip_joint", "RR_thigh_joint", "RR_calf_joint"]
+joint_names: &jn ["LF_HAA", "LF_HFE", "LF_KFE", 
+                  "LH_HAA", "LH_HFE", "LH_KFE", 
+                  "RF_HAA", "RF_HFE", "RF_KFE", 
+                  "RH_HAA", "RH_HFE", "RH_KFE"]
+
+# joint_names: &jn ["FL_hip_joint", "FL_thigh_joint", "FL_calf_joint", 
+#                   "FR_hip_joint", "FR_thigh_joint", "FR_calf_joint", 
+#                   "RL_hip_joint", "RL_thigh_joint", "RL_calf_joint", 
+#                   "RR_hip_joint", "RR_thigh_joint", "RR_calf_joint"]
 
 base_name: "base"
 

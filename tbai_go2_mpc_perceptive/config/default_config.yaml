@@ -33,7 +33,7 @@ mpc_controller:
     traj_knots: 10
     blind: false
 
-anymal_d:
+go2: # anymal_d:
   joint_controller:
       type: tbai_gazebo/JointController
       joints: *jn

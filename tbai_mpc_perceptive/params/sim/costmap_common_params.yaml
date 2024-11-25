@@ -1,0 +1,23 @@
+obstacle_range: 3.0
+raytrace_range: 4.0
+footprint: [[-0.25, -0.145], [-0.25, 0.145], [0.25, 0.145], [0.25, -0.145]]
+robot_radius: 0.2
+inflation_radius: 0.2
+transform_tolerance: 1.0
+
+observation_sources: pointcloud
+pointcloud: {
+              data_type: PointCloud2, 
+              topic: /camera/depth/points, 
+              marking: true, 
+              clearing: true, 
+              expected_update_rate: 0
+            }
+
+# scan: {
+#         data_type: LaserScan, 
+#         topic: /scan, 
+#         marking: true, 
+#         clearing: true, 
+#         expected_update_rate: 0
+#       }

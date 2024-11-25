@@ -53,6 +53,7 @@ add_library(${PROJECT_NAME}
     src/wbc/WbcBase.cpp
     src/utils/LoadConfig.cpp
     src/MpcController.cpp
+    src/Go2MpcController.cpp
 )
 target_link_libraries(${PROJECT_NAME}
     ${catkin_LIBRARIES}
@@ -67,6 +68,13 @@ target_link_libraries(simple
     ${catkin_LIBRARIES} ${PROJECT_NAME} yaml-cpp
 )
 
+add_executable(go2_simple
+    src/go2_simple.cpp
+)
+target_link_libraries(go2_simple
+    ${catkin_LIBRARIES} ${PROJECT_NAME} yaml-cpp
+)
+
 add_executable(anymal_mpc_node
   src/MpcNode.cpp
 )
@@ -77,7 +85,7 @@ target_compile_options(anymal_mpc_node PRIVATE ${OCS2_CXX_FLAGS})
 
 
 add_executable(go2_mpc_node
-  src/MpcNode.cpp
+  src/Go2MpcNode.cpp
 )
 target_link_libraries(go2_mpc_node
   ${catkin_LIBRARIES}

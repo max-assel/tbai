@@ -17,10 +17,10 @@ namespace tbai {
 namespace mpc {
 
 MpcController::MpcController(const std::shared_ptr<tbai::core::StateSubscriber> &stateSubscriberPtr)
-    : stateSubscriberPtr_(stateSubscriberPtr), mrt_("anymal"), stopReferenceThread_(false) {
+    : stateSubscriberPtr_(stateSubscriberPtr), mrt_("go2"), stopReferenceThread_(false) {
     initTime_ = tbai::core::getEpochStart();
 
-    const std::string robotName = "anymal";
+    const std::string robotName = "go2";
     ros::NodeHandle nh;
 
     // Load default joint state

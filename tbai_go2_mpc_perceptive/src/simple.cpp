@@ -6,7 +6,7 @@
 #include <iostream>
 
 #include <tbai_core/Utils.hpp>
-#include "tbai_mpc/MpcController.hpp"
+#include "tbai_mpc/Go2MpcController.hpp"
 #include "tbai_static/StaticController.hpp"
 #include <ros/ros.h>
 #include <tbai_core/config/YamlConfig.hpp>
@@ -29,7 +29,7 @@ int main(int argc, char *argv[]) {
     // Add static controller
     controller.addController(
         std::make_unique<tbai::static_::StaticController>(configParam, controller.getStateSubscriberPtr()));
-    controller.addController(std::make_unique<tbai::mpc::MpcController>(controller.getStateSubscriberPtr()));
+    controller.addController(std::make_unique<tbai::mpc::Go2MpcController>(controller.getStateSubscriberPtr()));
 
     // Start controller loop
 

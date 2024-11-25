@@ -26,66 +26,66 @@ model_settings
 
   joint_lower_limits
   {
-     (0,0)  -0.72       ; LF_HAA
-     (1,0)  -3.14       ; LF_HFE
-     (2,0)  -2.70       ; LF_KFE
-     (3,0)  -0.49       ; RF_HAA
-     (4,0)  -3.14       ; RF_HFE
-     (5,0)  -2.70       ; RF_KFE
-     (6,0)  -0.72       ; LH_HAA
-     (7,0)  -3.14       ; LH_HFE
-     (8,0)   0.00       ; LH_KFE
-     (9,0)  -0.49       ; RH_HAA
-     (10,0) -3.14       ; RH_HFE
-     (11,0)  0.00       ; RH_KFE
+     (0,0)  -1.0472       ; LF_HAA
+     (1,0)  -1.5708       ; LF_HFE
+     (2,0)  -2.7227       ; LF_KFE
+     (3,0)  -1.0472       ; RF_HAA
+     (4,0)  -1.5708       ; RF_HFE
+     (5,0)  -2.7227       ; RF_KFE
+     (6,0)  -1.0472       ; LH_HAA
+     (7,0)  -1.5708       ; LH_HFE
+     (8,0)   -2.7227     ; LH_KFE
+     (9,0)  -1.0472       ; RH_HAA
+     (10,0) -1.5708     ; RH_HFE
+     (11,0)  -2.7227    ; RH_KFE
   }
 
   joint_upper_limits
   {
-     (0,0)   0.49       ; LF_HAA
-     (1,0)   3.14       ; LF_HFE
-     (2,0)  -0.00       ; LF_KFE
-     (3,0)   0.72       ; RF_HAA
-     (4,0)   3.14       ; RF_HFE
-     (5,0)  -0.00       ; RF_KFE
-     (6,0)   0.49       ; LH_HAA
-     (7,0)   3.14       ; LH_HFE
-     (8,0)   2.70       ; LH_KFE
-     (9,0)   0.72       ; RH_HAA
-     (10,0)  3.14       ; RH_HFE
-     (11,0)  2.70       ; RH_KFE
+     (0,0)   1.0472       ; LF_HAA
+     (1,0)   3.4907       ; LF_HFE
+     (2,0)  -0.83776       ; LF_KFE
+     (3,0)   1.0472       ; RF_HAA
+     (4,0)   3.4907      ; RF_HFE
+     (5,0)  -0.83776     ; RF_KFE
+     (6,0)   1.0472       ; LH_HAA
+     (7,0)   3.4907     ; LH_HFE
+     (8,0)   -0.83776    ; LH_KFE
+     (9,0)   1.0472       ; RH_HAA
+     (10,0)  3.4907     ; RH_HFE
+     (11,0)  -0.83776   ; RH_KFE
   }
 
   joint_velocity_limits
   {
-     (0,0)    7.0       ; LF_HAA
-     (1,0)    7.0       ; LF_HFE
-     (2,0)    7.0       ; LF_KFE
-     (3,0)    7.0       ; RF_HAA
-     (4,0)    7.0       ; RF_HFE
-     (5,0)    7.0       ; RF_KFE
-     (6,0)    7.0       ; LH_HAA
-     (7,0)    7.0       ; LH_HFE
-     (8,0)    7.0       ; LH_KFE
-     (9,0)    7.0       ; RH_HAA
-     (10,0)   7.0       ; RH_HFE
-     (11,0)   7.0       ; RH_KFE
+     (0,0)    30.1       ; LF_HAA
+     (1,0)    30.1       ; LF_HFE
+     (2,0)    15.7       ; LF_KFE
+     (3,0)    30.1       ; RF_HAA
+     (4,0)    30.1       ; RF_HFE
+     (5,0)    15.7      ; RF_KFE
+     (6,0)    30.1       ; LH_HAA
+     (7,0)    30.1       ; LH_HFE
+     (8,0)    15.7      ; LH_KFE
+     (9,0)    30.1       ; RH_HAA
+     (10,0)   30.1       ; RH_HFE
+     (11,0)   15.7      ; RH_KFE
   }
 
   joint_torque_limits
   {
-     (0,0)   80.0       ; LF_HAA
-     (1,0)   80.0       ; LF_HFE
-     (2,0)   80.0       ; LF_KFE
-     (3,0)   80.0       ; RF_HAA
-     (4,0)   80.0       ; RF_HFE
-     (5,0)   80.0       ; RF_KFE
-     (6,0)   80.0       ; LH_HAA
-     (7,0)   80.0       ; LH_HFE
-     (8,0)   80.0       ; LH_KFE
-     (9,0)   80.0       ; RH_HAA
-     (10,0)  80.0       ; RH_HFE
-     (11,0)  80.0       ; RH_KFE
+     (0,0)   23.7        ; LF_HAA
+     (1,0)   23.7        ; LF_HFE
+     (2,0)   35.55       ; LF_KFE
+     (3,0)   23.7        ; RF_HAA
+     (4,0)   23.7        ; RF_HFE
+     (5,0)   35.55       ; RF_KFE
+     (6,0)   23.7        ; LH_HAA
+     (7,0)   23.7        ; LH_HFE
+     (8,0)   35.55       ; LH_KFE
+     (9,0)   23.7        ; RH_HAA
+     (10,0)  23.7        ; RH_HFE
+     (11,0)  35.55       ; RH_KFE
   }
 
   swing_trajectory_settings
@@ -193,7 +193,7 @@ mpc
 
   debugPrint                      false
 
-  mpcDesiredFrequency             20 ; 30  ; [Hz]
+  mpcDesiredFrequency             30  ; [Hz]
   mrtDesiredFrequency             400 ; [Hz]
 }
 
@@ -208,7 +208,7 @@ initialRobotState
    ; position
    (3,0) 0.0     ; x
    (4,0) 0.0     ; y
-   (5,0) 0.57    ; z
+   (5,0) 0.30    ; z
 
    ; angular velocity
    (6,0) 0.0    ; x
@@ -220,19 +220,19 @@ initialRobotState
    (10,0) 0.0    ; y
    (11,0) 0.0    ; z
 
-   ; joint state
-   (12,0) -0.25  ; LF_HAA
-   (13,0)  0.60  ; LF_HFE
-   (14,0) -0.85  ; LF_KFE
-   (15,0)  0.25  ; RF_HAA
-   (16,0)  0.60  ; RF_HFE
-   (17,0) -0.85  ; RF_KFE
-   (18,0) -0.25  ; LH_HAA
-   (19,0) -0.60  ; LH_HFE
-   (20,0)  0.85  ; LH_KFE
-   (21,0)  0.25  ; RH_HAA
-   (22,0) -0.60  ; RH_HFE
-   (23,0)  0.85  ; RH_KFE
+    ;; Leg Joint Positions: [FL, RL, FR, RR] ;;
+    (12,0)   0.0    ; FL_hip_joint
+    (13,0)   0.72   ; FL_thigh_joint
+    (14,0)  -1.44   ; FL_calf_joint
+    (15,0)   0.0    ; RL_hip_joint
+    (16,0)   0.72   ; RL_thigh_joint
+    (17,0)  -1.44   ; RL_calf_joint
+    (18,0)   0.0    ; FR_hip_joint
+    (19,0)   0.72   ; FR_thigh_joint
+    (20,0)  -1.44   ; FR_calf_joint
+    (21,0)   0.0    ; RR_hip_joint
+    (22,0)   0.72   ; RR_thigh_joint
+    (23,0)  -1.44   ; RR_calf_joint
 }
 tracking_cost_weights
 {

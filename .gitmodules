@@ -3,7 +3,7 @@
 	url = git@github.com:max-assel/ocs2.git
 [submodule "dependencies/ocs2_robotic_assets"]
 	path = dependencies/ocs2_robotic_assets
-	url = git@github.com:projectatctu/ocs2_robotic_assets.git
+	url = git@github.com:max-assel/ocs2_robotic_assets.git
 [submodule "dependencies/elevation_mapping"]
 	path = dependencies/elevation_mapping
 	url = https://github.com/ANYbotics/elevation_mapping.git

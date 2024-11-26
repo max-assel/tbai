@@ -93,6 +93,7 @@ Visualization Manager:
           Alpha: 1
           Show Axes: false
           Show Trail: false
+          Value: true
         LF_KFE_drive:
           Alpha: 1
           Show Axes: false
@@ -102,10 +103,12 @@ Visualization Manager:
           Alpha: 1
           Show Axes: false
           Show Trail: false
+          Value: true
         LF_THIGH:
           Alpha: 1
           Show Axes: false
           Show Trail: false
+          Value: true
         LF_hip_fixed:
           Alpha: 1
           Show Axes: false
@@ -336,10 +339,6 @@ Visualization Manager:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-        imu_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
         wide_angle_camera_front_camera:
           Alpha: 1
           Show Axes: false
@@ -361,7 +360,7 @@ Visualization Manager:
       Color Layer: elevation
       Color Transformer: GridMapLayer
       ColorMap: default
-      Enabled: true
+      Enabled: false
       Grid Cell Decimation: 1
       Grid Line Thickness: 0.10000000149011612
       Height Layer: elevation
@@ -377,188 +376,14 @@ Visualization Manager:
       Topic: /convex_plane_decomposition_ros/filtered_map
       Unreliable: false
       Use ColorMap: true
-      Value: true
+      Value: false
     - Class: rviz/TF
-      Enabled: true
+      Enabled: false
       Filter (blacklist): ""
       Filter (whitelist): ""
       Frame Timeout: 15
       Frames:
         All Enabled: true
-        LF_FOOT:
-          Value: true
-        LF_HAA_drive:
-          Value: true
-        LF_HFE_drive:
-          Value: true
-        LF_HFE_output:
-          Value: true
-        LF_HIP:
-          Value: true
-        LF_KFE_drive:
-          Value: true
-        LF_SHANK:
-          Value: true
-        LF_THIGH:
-          Value: true
-        LF_hip_fixed:
-          Value: true
-        LF_shank_fixed:
-          Value: true
-        LF_thigh_fixed:
-          Value: true
-        LH_FOOT:
-          Value: true
-        LH_HAA_drive:
-          Value: true
-        LH_HFE_drive:
-          Value: true
-        LH_HFE_output:
-          Value: true
-        LH_HIP:
-          Value: true
-        LH_KFE_drive:
-          Value: true
-        LH_SHANK:
-          Value: true
-        LH_THIGH:
-          Value: true
-        LH_hip_fixed:
-          Value: true
-        LH_shank_fixed:
-          Value: true
-        LH_thigh_fixed:
-          Value: true
-        RF_FOOT:
-          Value: true
-        RF_HAA_drive:
-          Value: true
-        RF_HFE_drive:
-          Value: true
-        RF_HFE_output:
-          Value: true
-        RF_HIP:
-          Value: true
-        RF_KFE_drive:
-          Value: true
-        RF_SHANK:
-          Value: true
-        RF_THIGH:
-          Value: true
-        RF_hip_fixed:
-          Value: true
-        RF_shank_fixed:
-          Value: true
-        RF_thigh_fixed:
-          Value: true
-        RH_FOOT:
-          Value: true
-        RH_HAA_drive:
-          Value: true
-        RH_HFE_drive:
-          Value: true
-        RH_HFE_output:
-          Value: true
-        RH_HIP:
-          Value: true
-        RH_KFE_drive:
-          Value: true
-        RH_SHANK:
-          Value: true
-        RH_THIGH:
-          Value: true
-        RH_hip_fixed:
-          Value: true
-        RH_shank_fixed:
-          Value: true
-        RH_thigh_fixed:
-          Value: true
-        base:
-          Value: true
-        base_inertia:
-          Value: true
-        battery:
-          Value: true
-        body_top:
-          Value: true
-        bottom_shell:
-          Value: true
-        depth_camera_front_lower_camera:
-          Value: true
-        depth_camera_front_lower_camera_parent:
-          Value: true
-        depth_camera_front_lower_depth_frame:
-          Value: true
-        depth_camera_front_lower_depth_optical_frame:
-          Value: true
-        depth_camera_front_upper_camera:
-          Value: true
-        depth_camera_front_upper_camera_parent:
-          Value: true
-        depth_camera_front_upper_depth_frame:
-          Value: true
-        depth_camera_front_upper_depth_optical_frame:
-          Value: true
-        depth_camera_left_camera:
-          Value: true
-        depth_camera_left_camera_parent:
-          Value: true
-        depth_camera_left_depth_frame:
-          Value: true
-        depth_camera_left_depth_optical_frame:
-          Value: true
-        depth_camera_rear_lower_camera:
-          Value: true
-        depth_camera_rear_lower_camera_parent:
-          Value: true
-        depth_camera_rear_lower_depth_frame:
-          Value: true
-        depth_camera_rear_lower_depth_optical_frame:
-          Value: true
-        depth_camera_rear_upper_camera:
-          Value: true
-        depth_camera_rear_upper_camera_parent:
-          Value: true
-        depth_camera_rear_upper_depth_frame:
-          Value: true
-        depth_camera_rear_upper_depth_optical_frame:
-          Value: true
-        depth_camera_right_camera:
-          Value: true
-        depth_camera_right_camera_parent:
-          Value: true
-        depth_camera_right_depth_frame:
-          Value: true
-        depth_camera_right_depth_optical_frame:
-          Value: true
-        docking_socket:
-          Value: true
-        face_front:
-          Value: true
-        face_rear:
-          Value: true
-        face_shell_front:
-          Value: true
-        face_shell_rear:
-          Value: true
-        hbc_receiver:
-          Value: true
-        imu_link:
-          Value: true
-        lidar:
-          Value: true
-        lidar_parent:
-          Value: true
-        top_shell:
-          Value: true
-        wide_angle_camera_front_camera:
-          Value: true
-        wide_angle_camera_front_camera_parent:
-          Value: true
-        wide_angle_camera_rear_camera:
-          Value: true
-        wide_angle_camera_rear_camera_parent:
-          Value: true
       Marker Alpha: 1
       Marker Scale: 1
       Name: TF
@@ -566,130 +391,9 @@ Visualization Manager:
       Show Axes: true
       Show Names: true
       Tree:
-        LF_HIP:
-          LF_hip_fixed:
-            LF_HFE_output:
-              {}
-        LF_SHANK:
-          LF_shank_fixed:
-            LF_FOOT:
-              {}
-        LF_THIGH:
-          LF_HFE_drive:
-            LF_thigh_fixed:
-              LF_KFE_drive:
-                {}
-        LH_HIP:
-          LH_hip_fixed:
-            LH_HFE_output:
-              {}
-        LH_SHANK:
-          LH_shank_fixed:
-            LH_FOOT:
-              {}
-        LH_THIGH:
-          LH_HFE_drive:
-            LH_thigh_fixed:
-              LH_KFE_drive:
-                {}
-        RF_HIP:
-          RF_hip_fixed:
-            RF_HFE_output:
-              {}
-        RF_SHANK:
-          RF_shank_fixed:
-            RF_FOOT:
-              {}
-        RF_THIGH:
-          RF_HFE_drive:
-            RF_thigh_fixed:
-              RF_KFE_drive:
-                {}
-        RH_HIP:
-          RH_hip_fixed:
-            RH_HFE_output:
-              {}
-        RH_SHANK:
-          RH_shank_fixed:
-            RH_FOOT:
-              {}
-        RH_THIGH:
-          RH_HFE_drive:
-            RH_thigh_fixed:
-              RH_KFE_drive:
-                {}
-        base:
-          LF_HAA_drive:
-            {}
-          LH_HAA_drive:
-            {}
-          RF_HAA_drive:
-            {}
-          RH_HAA_drive:
-            {}
-          base_inertia:
-            {}
-          battery:
-            {}
-          body_top:
-            {}
-          bottom_shell:
-            {}
-          depth_camera_left_camera:
-            depth_camera_left_camera_parent:
-              depth_camera_left_depth_frame:
-                depth_camera_left_depth_optical_frame:
-                  {}
-          depth_camera_right_camera:
-            depth_camera_right_camera_parent:
-              depth_camera_right_depth_frame:
-                depth_camera_right_depth_optical_frame:
-                  {}
-          docking_socket:
-            {}
-          face_front:
-            depth_camera_front_lower_camera:
-              depth_camera_front_lower_camera_parent:
-                depth_camera_front_lower_depth_frame:
-                  depth_camera_front_lower_depth_optical_frame:
-                    {}
-            depth_camera_front_upper_camera:
-              depth_camera_front_upper_camera_parent:
-                depth_camera_front_upper_depth_frame:
-                  depth_camera_front_upper_depth_optical_frame:
-                    {}
-            face_shell_front:
-              {}
-            wide_angle_camera_front_camera:
-              wide_angle_camera_front_camera_parent:
-                {}
-          face_rear:
-            depth_camera_rear_lower_camera:
-              depth_camera_rear_lower_camera_parent:
-                depth_camera_rear_lower_depth_frame:
-                  depth_camera_rear_lower_depth_optical_frame:
-                    {}
-            depth_camera_rear_upper_camera:
-              depth_camera_rear_upper_camera_parent:
-                depth_camera_rear_upper_depth_frame:
-                  depth_camera_rear_upper_depth_optical_frame:
-                    {}
-            face_shell_rear:
-              {}
-            wide_angle_camera_rear_camera:
-              wide_angle_camera_rear_camera_parent:
-                {}
-          hbc_receiver:
-            {}
-          imu_link:
-            {}
-          lidar_parent:
-            lidar:
-              {}
-          top_shell:
-            {}
+        {}
       Update Interval: 0
-      Value: true
+      Value: false
     - Class: rviz/Image
       Enabled: true
       Image Topic: /camera/depth/image_raw
@@ -730,7 +434,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 1.4915846586227417
+      Distance: 0.856407880783081
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -738,17 +442,17 @@ Visualization Manager:
         Value: false
       Field of View: 0.7853981852531433
       Focal Point:
-        X: 0.4726131558418274
-        Y: 0.2654403746128082
-        Z: -0.18675728142261505
+        X: -0.010454040952026844
+        Y: 0.11387817561626434
+        Z: 0.18826037645339966
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.8753982782363892
+      Pitch: 0.5903989672660828
       Target Frame: <Fixed Frame>
-      Yaw: 4.70855188369751
+      Yaw: 0.5803669691085815
     Saved: ~
 Window Geometry:
   Displays:

@@ -90,11 +90,7 @@
     <!-- Camera joint -->
     <!-- Is located in the center of the mounting points. -->
 
-
-
-
-
-     <!-- Camera joint -->
+    <!-- Camera joint -->
     <!-- Is located between the two back screw holes at ground level. -->
     <!-- <joint name="face_rear_to_depth_camera_rear_camera" type="fixed">
         <parent link="face_rear"/>
@@ -306,7 +302,7 @@
 
     <!-- Right camera -->
     <!-- Right depth camera -->
-    <gazebo reference="depth_camera_right_camera">
+    <!-- <gazebo reference="depth_camera_right_camera">
         <sensor type="depth" name="realsense_R200">
             <always_on>true</always_on>
             <visualize>false</visualize>
@@ -355,7 +351,7 @@
             <hackBaseline>0</hackBaseline>
             </plugin>
         </sensor>
-    </gazebo>
+    </gazebo> -->
 
     <!-- Add contact sensors -->
     <gazebo reference="LF_FOOT">

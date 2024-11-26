@@ -1,7 +1,7 @@
 model_settings
 {
   algorithm                     SQP
-  recompileLibraries            false
+  recompileLibraries            true
   robotName                     c_series
 
   analyticalInverseKinematics   true

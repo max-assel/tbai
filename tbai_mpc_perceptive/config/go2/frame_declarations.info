@@ -1,51 +1,51 @@
 root    base
 
 left_front {
-    root    FL_hip
-    tip     FL_foot
+    root    LF_HAA
+    tip     LF_FOOT
     joints {
-        [0] FL_hip_joint
-        [1] FL_thigh_joint
-        [2] FL_calf_joint
+        [0] LF_HAA
+        [1] LF_HFE
+        [2] LF_KFE
     }
 }
 
 right_front {
-    root    FR_hip
-    tip     FR_foot
+    root    RF_HAA
+    tip     RF_FOOT
     joints {
-        [0] FR_hip_joint
-        [1] FR_thigh_joint
-        [2] FR_calf_joint
+        [0] RF_HAA
+        [1] RF_HFE
+        [2] RF_KFE
     }
 }
 
 left_hind {
-    root    RL_hip
-    tip     RL_foot
+    root    LH_HAA
+    tip     LH_FOOT
     joints {
-        [0] RL_hip_joint
-        [1] RL_thigh_joint
-        [2] RL_calf_joint
+        [0] LH_HAA
+        [1] LH_HFE
+        [2] LH_KFE
     }
 }
 
 right_hind {
-    root    RR_hip
-    tip     RR_foot
+    root    RH_HAA
+    tip     RH_FOOT
     joints {
-        [0] RR_hip_joint
-        [1] RR_thigh_joint
-        [2] RR_calf_joint
+        [0] RH_HAA
+        [1] RH_HFE
+        [2] RH_KFE
     }
 }
 
 collisions {
     collisionSpheres {
-        [0] "FL_calf_joint, 0.08"
-        [1] "FR_calf_joint, 0.08"
-        [2] "RL_calf_joint, 0.08"
-        [3] "RR_calf_joint, 0.08"
+        [0] "LF_KFE, 0.08"
+        [1] "RF_KFE, 0.08"
+        [2] "LH_KFE, 0.08"
+        [3] "RH_KFE, 0.08"
     }
     collisionOffsets {
         (0,0) -0.055

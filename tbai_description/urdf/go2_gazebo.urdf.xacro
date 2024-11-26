@@ -47,7 +47,6 @@
     </joint>
     <!-- Camera link -->
     <link name="depth_camera_front_camera">
-       
         <inertial>
             <origin rpy="0 0 0" xyz="-0.021 -0.002 0.025"/>
             <mass value="0.16043"/>

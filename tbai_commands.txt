@@ -1,5 +1,13 @@
+## For ANYmal
 rostopic pub --once /anymal_d/change_controller std_msgs/String  '{ data: STAND } '
 
 rostopic pub --once /anymal_d/change_controller std_msgs/String  '{ data: WBC } '
+
+rostopic pub --once /cmd_vel geometry_msgs/Twist -- '[-0.5, 0.0, 0.0]' '[0.0, 0.0, 0.0]'
+
+## For Go2
+rostopic pub --once /go2/change_controller std_msgs/String  '{ data: STAND } '
+
+rostopic pub --once /go2/change_controller std_msgs/String  '{ data: WBC } '
 
 rostopic pub --once /cmd_vel geometry_msgs/Twist -- '[-0.5, 0.0, 0.0]' '[0.0, 0.0, 0.0]'

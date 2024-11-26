@@ -89,55 +89,60 @@
     <link name="depth_camera_front_color_optical_frame"/>
     <!-- Camera joint -->
     <!-- Is located in the center of the mounting points. -->
+
+
+
+
+
      <!-- Camera joint -->
     <!-- Is located between the two back screw holes at ground level. -->
-    <joint name="face_rear_to_depth_camera_rear_camera" type="fixed">
+    <!-- <joint name="face_rear_to_depth_camera_rear_camera" type="fixed">
         <parent link="face_rear"/>
         <child link="depth_camera_rear_camera"/>
         <origin rpy="0.0 0.523598775598 0" xyz="0.04715 0.0 -0.0292"/>
-    </joint>
+    </joint> -->
     <!-- Camera link -->
-    <link name="depth_camera_rear_camera">
+    <!-- <link name="depth_camera_rear_camera">
         
         <inertial>
             <origin rpy="0 0 0" xyz="-0.021 -0.002 0.025"/>
             <mass value="0.16043"/>
             <inertia ixx="0.000637051" ixy="0.000484569" ixz="0.000424211" iyy="0.000929402" iyz="5.138e-06" izz="0.000484569"/>
         </inertial>
-    </link>
+    </link> -->
     <!-- Camera parent joint -->
     <!-- Frame lies on the left ir camera according to any_realsense2_camera urdf. -->
-    <joint name="depth_camera_rear_camera_to_camera_parent" type="fixed">
+    <!-- <joint name="depth_camera_rear_camera_to_camera_parent" type="fixed">
         <parent link="depth_camera_rear_camera"/>
         <child link="depth_camera_rear_camera_parent"/>
         <origin rpy="0.0 0.0 0.0" xyz="0.0255 0.0175 0.0"/>
-    </joint>
+    </joint> -->
     <!-- Camera parent link -->
-    <link name="depth_camera_rear_camera_parent"/>
+    <!-- <link name="depth_camera_rear_camera_parent"/> -->
     <!-- Depth optical frame joint -->
-    <joint name="depth_camera_rear_camera_parent_to_depth_optical_frame" type="fixed">
+    <!-- <joint name="depth_camera_rear_camera_parent_to_depth_optical_frame" type="fixed">
         <parent link="depth_camera_rear_camera_parent"/>
         <child link="depth_camera_rear_depth_optical_frame"/>
         <origin rpy="-1.57079632679 0.0 -1.57079632679" xyz="0.0 0.0 0.0"/>
-    </joint>
+    </joint> -->
     <!-- Depth optical frame link -->
-    <link name="depth_camera_rear_depth_optical_frame"/>
+    <!-- <link name="depth_camera_rear_depth_optical_frame"/> -->
     <!-- Camera color frame joint -->
-    <joint name="depth_camera_rear_camera_parent_to_color_frame" type="fixed">
+    <!-- <joint name="depth_camera_rear_camera_parent_to_color_frame" type="fixed">
         <parent link="depth_camera_rear_camera_parent"/>
         <child link="depth_camera_rear_color_frame"/>
         <origin rpy="0 0 0" xyz="0 0.015 0"/>
-    </joint>
+    </joint> -->
     <!-- Camera color frame link -->
-    <link name="depth_camera_rear_color_frame"/>
+    <!-- <link name="depth_camera_rear_color_frame"/> -->
     <!-- Camera color optical joint -->
-    <joint name="depth_camera_rear_color_frame_to_color_optical_frame" type="fixed">
+    <!-- <joint name="depth_camera_rear_color_frame_to_color_optical_frame" type="fixed">
         <parent link="depth_camera_rear_color_frame"/>
         <child link="depth_camera_rear_color_optical_frame"/>
         <origin rpy="-1.57079632679 0.0 -1.57079632679" xyz="0.0 0.0 0.0"/>
-    </joint>
+    </joint> -->
     <!-- Camera color optical link -->
-    <link name="depth_camera_rear_color_optical_frame"/>
+    <!-- <link name="depth_camera_rear_color_optical_frame"/> -->
     <!-- Camera joint -->
 
     <!-- Front camera -->
@@ -195,7 +200,7 @@
 
     <!-- Back camera -->
     <!-- Back depth camera -->
-    <gazebo reference="depth_camera_rear_camera">
+    <!-- <gazebo reference="depth_camera_rear_camera">
         <sensor type="depth" name="realsense_R200">
             <always_on>true</always_on>
             <visualize>false</visualize>
@@ -244,11 +249,11 @@
             <hackBaseline>0</hackBaseline>
             </plugin>
         </sensor>
-    </gazebo>
+    </gazebo> -->
 
     <!-- Left camera -->
     <!-- Left depth camera -->
-    <gazebo reference="depth_camera_left_camera">
+    <!-- <gazebo reference="depth_camera_left_camera">
         <sensor type="depth" name="realsense_R200">
             <always_on>true</always_on>
             <visualize>false</visualize>
@@ -297,7 +302,7 @@
             <hackBaseline>0</hackBaseline>
             </plugin>
         </sensor>
-    </gazebo>
+    </gazebo> -->
 
     <!-- Right camera -->
     <!-- Right depth camera -->
@@ -350,7 +355,6 @@
             <hackBaseline>0</hackBaseline>
             </plugin>
         </sensor>
-
     </gazebo>
 
     <!-- Add contact sensors -->

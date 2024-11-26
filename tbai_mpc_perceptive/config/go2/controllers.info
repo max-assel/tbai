@@ -13,8 +13,8 @@ sqpWbc
   swingKd                 50.0
 
   ; Base position kp and kd 
-  baseKp                  1.0
-  baseKd                  0.0
+  baseKp                  550.0
+  baseKd                  50.0
 
   ; Base orientation kp and kd
   eulerKp                 0.0
@@ -29,7 +29,7 @@ sqpWbc
   jointStanceKd            5.2
 
   ; Joint torque limit
-  torqueLimit              80.0
+  torqueLimit              23.7
 }
 
 hqpWbc
@@ -58,7 +58,7 @@ hqpWbc
   jointStanceKd            5.2
 
   ; Joint torque limit
-  torqueLimit              80.0
+  torqueLimit              23.7
 }
 
 StaticController 

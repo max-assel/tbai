@@ -26,7 +26,7 @@ Panels:
   - Class: rviz/Time
     Name: Time
     SyncMode: 0
-    SyncSource: Image
+    SyncSource: ""
   - Class: rviz/Displays
     Help Height: 70
     Name: Displays
@@ -75,26 +75,7 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
-        LF_HAA_drive:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        LF_HFE_drive:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        LF_HFE_output:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
         LF_HIP:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        LF_KFE_drive:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -109,12 +90,12 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
-        LF_shank_fixed:
+        LF_calflower:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        LF_thigh_fixed:
+        LF_calflower1:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -124,25 +105,7 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
-        LH_HAA_drive:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        LH_HFE_drive:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        LH_HFE_output:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
         LH_HIP:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        LH_KFE_drive:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -151,21 +114,18 @@ Visualization Manager:
           Alpha: 1
           Show Axes: false
           Show Trail: false
+          Value: true
         LH_THIGH:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-        LH_hip_fixed:
+          Value: true
+        LH_calflower:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        LH_shank_fixed:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        LH_thigh_fixed:
+        LH_calflower1:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -176,25 +136,7 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
-        RF_HAA_drive:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        RF_HFE_drive:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        RF_HFE_output:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
         RF_HIP:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        RF_KFE_drive:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -203,21 +145,18 @@ Visualization Manager:
           Alpha: 1
           Show Axes: false
           Show Trail: false
+          Value: true
         RF_THIGH:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-        RF_hip_fixed:
+          Value: true
+        RF_calflower:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        RF_shank_fixed:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        RF_thigh_fixed:
+        RF_calflower1:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -227,25 +166,7 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
-        RH_HAA_drive:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        RH_HFE_drive:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        RH_HFE_output:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
         RH_HIP:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        RH_KFE_drive:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -254,21 +175,18 @@ Visualization Manager:
           Alpha: 1
           Show Axes: false
           Show Trail: false
+          Value: true
         RH_THIGH:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-        RH_hip_fixed:
+          Value: true
+        RH_calflower:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        RH_shank_fixed:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        RH_thigh_fixed:
+        RH_calflower1:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -355,7 +273,7 @@ Visualization Manager:
       Color Layer: elevation
       Color Transformer: GridMapLayer
       ColorMap: default
-      Enabled: false
+      Enabled: true
       Grid Cell Decimation: 1
       Grid Line Thickness: 0.10000000149011612
       Height Layer: elevation
@@ -371,7 +289,7 @@ Visualization Manager:
       Topic: /convex_plane_decomposition_ros/filtered_map
       Unreliable: false
       Use ColorMap: true
-      Value: false
+      Value: true
     - Class: rviz/TF
       Enabled: false
       Filter (blacklist): ""

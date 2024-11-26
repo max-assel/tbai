@@ -14,9 +14,9 @@ state_publisher:
 
 static_controller:
   stand_controller:
-    joint_angles: [0.0, 0.4, -0.8, 0.0, -0.4, 0.8, 0.0, 0.4, -0.8, 0.0, -0.4, 0.8] # LF, LH, RF, RH
+    joint_angles: [0.0, 0.72, -1.44, 0.0, 0.72, -1.44, 0.0, 0.72, -1.44, 0.0, 0.72, -1.44] # LF, LH, RF, RH
   sit_controller:
-    joint_angles: [0.0, 1.5, -2.6, 0.0, -1.5, 2.6, 0.0, 1.5, -2.6, 0.0, -1.5, 2.6] # LF, LH, RF, RH
+    joint_angles: [0.0, 1.4, -2.7, 0.0, 1.4, -2.7, 0.0, 1.4, -2.7, 0.0, 1.4, -2.7] # LF, LH, RF, RH
   kp: 400
   kd: 5
   interpolation_time: 1.0 # s

@@ -26,8 +26,8 @@ mpc_controller:
   wbc_type: "sqp"
   reference_trajectory:
     terrain_topic: "/convex_plane_decomposition_ros/filtered_map"
-    reference_topic: "/anymal_mpc_target"
-    observation_topic: "/anymal_mpc_observation"
+    reference_topic: "/anymal_mpc_target" ## Leave this as anymal! anymal prefix is hardcoded in the controller
+    observation_topic: "/anymal_mpc_observation" ## Leave this as anymal! anymal prefix is hardcoded in the controller
     traj_dt: 0.1
     traj_knots: 10
     blind: false

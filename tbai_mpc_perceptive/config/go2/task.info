@@ -2,7 +2,7 @@ model_settings
 {
   algorithm                     SQP
   recompileLibraries            true
-  robotName                     c_series
+  robotName                     go2
 
   analyticalInverseKinematics   true
 

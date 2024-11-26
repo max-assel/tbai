@@ -17,7 +17,8 @@ namespace tbai {
 namespace mpc {
 
 MpcController::MpcController(const std::shared_ptr<tbai::core::StateSubscriber> &stateSubscriberPtr)
-    : stateSubscriberPtr_(stateSubscriberPtr), mrt_("anymal"), stopReferenceThread_(false) {
+    : stateSubscriberPtr_(stateSubscriberPtr), mrt_("anymal"), stopReferenceThread_(false) 
+{
     initTime_ = tbai::core::getEpochStart();
 
     const std::string robotName = "anymal";
@@ -196,7 +197,8 @@ void MpcController::setObservation() {
     timeSinceLastMpcUpdate_ = 0.0;
 }
 
-ocs2::SystemObservation MpcController::generateSystemObservation() const {
+ocs2::SystemObservation MpcController::generateSystemObservation() const 
+{
     const tbai::vector_t &rbdState = stateSubscriberPtr_->getLatestRbdState();
 
     // Set observation time

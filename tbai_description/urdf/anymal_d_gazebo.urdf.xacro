@@ -96,6 +96,8 @@
         <child link="depth_camera_rear_camera"/>
         <origin rpy="0.0 0.523598775598 0" xyz="0.04715 0.0 -0.0292"/>
     </joint>
+
+    
     <!-- Camera link -->
     <link name="depth_camera_rear_camera">
         
@@ -195,7 +197,7 @@
 
     <!-- Back camera -->
     <!-- Back depth camera -->
-    <gazebo reference="depth_camera_rear_camera">
+    <!-- <gazebo reference="depth_camera_rear_camera">
         <sensor type="depth" name="realsense_R200">
             <always_on>true</always_on>
             <visualize>false</visualize>
@@ -244,11 +246,11 @@
             <hackBaseline>0</hackBaseline>
             </plugin>
         </sensor>
-    </gazebo>
+    </gazebo> -->
 
     <!-- Left camera -->
     <!-- Left depth camera -->
-    <gazebo reference="depth_camera_left_camera">
+    <!-- <gazebo reference="depth_camera_left_camera">
         <sensor type="depth" name="realsense_R200">
             <always_on>true</always_on>
             <visualize>false</visualize>
@@ -297,11 +299,11 @@
             <hackBaseline>0</hackBaseline>
             </plugin>
         </sensor>
-    </gazebo>
+    </gazebo> -->
 
     <!-- Right camera -->
     <!-- Right depth camera -->
-    <gazebo reference="depth_camera_right_camera">
+    <!-- <gazebo reference="depth_camera_right_camera">
         <sensor type="depth" name="realsense_R200">
             <always_on>true</always_on>
             <visualize>false</visualize>
@@ -351,7 +353,7 @@
             </plugin>
         </sensor>
 
-    </gazebo>
+    </gazebo> -->
 
     <!-- Add contact sensors -->
     <gazebo reference="LF_FOOT">

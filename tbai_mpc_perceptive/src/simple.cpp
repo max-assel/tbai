@@ -13,7 +13,7 @@
 #include <tbai_core/control/CentralController.hpp>
 
 int main(int argc, char *argv[]) {
-    ros::init(argc, argv, "tbai_static");
+    ros::init(argc, argv, "tbai_mpc_perceptive");
     const std::string configParam = "/tbai_config_path";
 
     tbai::core::setEpochStart();
@@ -27,12 +27,10 @@ int main(int argc, char *argv[]) {
     tbai::core::CentralController controller(nh, stateTopic, commandTopic, changeControllerTopic);
 
     // Add static controller
-    controller.addController(
-        std::make_unique<tbai::static_::StaticController>(configParam, controller.getStateSubscriberPtr()));
+    controller.addController(std::make_unique<tbai::static_::StaticController>(configParam, controller.getStateSubscriberPtr()));
     controller.addController(std::make_unique<tbai::mpc::MpcController>(controller.getStateSubscriberPtr()));
 
     // Start controller loop
-
     controller.start();
 
     return EXIT_SUCCESS;

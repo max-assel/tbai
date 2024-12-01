@@ -109,7 +109,9 @@ ReferenceTrajectoryGenerator::ReferenceTrajectoryGenerator(const std::string &ta
 /*********************************************************************************************************************/
 /*********************************************************************************************************************/
 
-void ReferenceTrajectoryGenerator::publishReferenceTrajectory() {
+void ReferenceTrajectoryGenerator::publishReferenceTrajectory() 
+{
+    // std::cerr << "[ReferenceTrajectoryGenerator::publishReferenceTrajectory]" << std::endl;
     if (!firstObservationReceived_) {
         ROS_WARN_THROTTLE(1.0, "No observation received yet. Cannot publish reference trajectory.");
         return;
@@ -158,7 +160,10 @@ const TerrainPlane &ReferenceTrajectoryGenerator::getTerrainPlane() const {
 /*********************************************************************************************************************/
 /*********************************************************************************************************************/
 /*********************************************************************************************************************/
-ocs2::TargetTrajectories ReferenceTrajectoryGenerator::generateReferenceTrajectory(scalar_t time, scalar_t dt) {
+ocs2::TargetTrajectories ReferenceTrajectoryGenerator::generateReferenceTrajectory(scalar_t time, scalar_t dt) 
+{
+    // std::cerr << "[ReferenceTrajectoryGenerator::generateReferenceTrajectory]" << std::endl;
+
     // Get base reference trajectory
     BaseReferenceTrajectory baseReferenceTrajectory;
     if (!terrainMapPtr_) {
@@ -176,7 +181,9 @@ ocs2::TargetTrajectories ReferenceTrajectoryGenerator::generateReferenceTrajecto
     const size_t N = desiredTimeTrajectory.size();
     ocs2::vector_array_t desiredStateTrajectory(N);
     ocs2::vector_array_t desiredInputTrajectory(N, ocs2::vector_t::Zero(INPUT_DIM));
-    for (size_t i = 0; i < N; ++i) {
+    for (size_t i = 0; i < N; ++i) 
+    {
+        // std::cerr << "      t: " << desiredTimeTrajectory[i] << std::endl;
         ocs2::vector_t state = ocs2::vector_t::Zero(STATE_DIM);
 
         // base orientation
@@ -186,6 +193,8 @@ ocs2::TargetTrajectories ReferenceTrajectoryGenerator::generateReferenceTrajecto
 
         // base position
         state.segment<3>(3) = baseReferenceTrajectory.positionInWorld[i];
+
+        // std::cerr << "      base position: " << state.segment<3>(3).transpose() << std::endl;
 
         // base angular velocity
         state.segment<3>(6) = Rt * baseReferenceTrajectory.angularVelocityInWorld[i];

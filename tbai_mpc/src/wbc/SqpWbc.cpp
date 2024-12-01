@@ -14,7 +14,8 @@ tbai_msgs::JointCommandArray SqpWbc::getCommandMessage(scalar_t currentTime, con
                                                        const vector_t &currentInput, const size_t currentMode,
                                                        const vector_t &desiredState, const vector_t &desiredInput,
                                                        const size_t desiredMode,
-                                                       const vector_t &desiredJointAcceleration) {
+                                                       const vector_t &desiredJointAcceleration) 
+{
     // Update state information
     updateContactFlags(currentMode, desiredMode);
     updateMeasuredState(currentState, currentInput.tail<12>());

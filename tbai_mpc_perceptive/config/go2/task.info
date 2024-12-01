@@ -1,8 +1,8 @@
 model_settings
 {
   algorithm                     SQP
-  recompileLibraries            true
-  robotName                     go2
+  recompileLibraries            false
+  robotName                     go2 ; only used for precompiled libraries
 
   analyticalInverseKinematics   true
 
@@ -208,7 +208,7 @@ initialRobotState
    ; position
    (3,0) 0.0     ; x
    (4,0) 0.0     ; y
-   (5,0) 0.3    ; z
+   (5,0) 0.35    ; z
 
    ; angular velocity
    (6,0) 0.0    ; x
@@ -234,13 +234,14 @@ initialRobotState
    (22,0)  0.72;    RH_HFE
    (23,0) -1.44;    RH_KFE
 }
+
 tracking_cost_weights
 {
     ; Base
     roll                   100.0;
     pitch                  300.0;
     yaw                    300.0;
-    base_position_x       1000.0;
+    base_position_x       1500.0;
     base_position_y       1000.0;
     base_position_z       1500.0;
     base_angular_vel_x      10.0;

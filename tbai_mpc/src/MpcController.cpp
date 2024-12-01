@@ -19,15 +19,17 @@ namespace mpc {
 MpcController::MpcController(const std::shared_ptr<tbai::core::StateSubscriber> &stateSubscriberPtr)
     : stateSubscriberPtr_(stateSubscriberPtr), mrt_("anymal"), stopReferenceThread_(false) 
 {
+    std::cerr << "[MpcController] Initializing MPC controller" << std::endl;
+
     initTime_ = tbai::core::getEpochStart();
 
     const std::string robotName = "anymal";
     ros::NodeHandle nh;
 
     // Load default joint state
-    std::string targetCommandConfig;
-    TBAI_ROS_THROW_IF(!nh.getParam("/target_command_config_file", targetCommandConfig),
-                      "Failed to get parameter /target_command_config_file");
+    // std::string targetCommandConfig;
+    // TBAI_ROS_THROW_IF(!nh.getParam("/target_command_config_file", targetCommandConfig),
+    //                   "Failed to get parameter /target_command_config_file");
 
     // URDF
     std::string urdfString;
@@ -71,7 +73,10 @@ void MpcController::spinOnceReferenceThread() {
     referenceThreadCallbackQueue_.callAvailable(ros::WallDuration(0.0));
 }
 
-tbai_msgs::JointCommandArray MpcController::getCommandMessage(scalar_t currentTime, scalar_t dt) {
+tbai_msgs::JointCommandArray MpcController::getCommandMessage(scalar_t currentTime, scalar_t dt) 
+{
+    // std::cerr << "[MpcController] getCommandMessage" << std::endl;
+
     mrt_.spinMRT();
     mrt_.updatePolicy();
 
@@ -92,6 +97,9 @@ tbai_msgs::JointCommandArray MpcController::getCommandMessage(scalar_t currentTi
 
     ocs2::vector_t joint_accelerations = (dummyInput.tail<12>() - desiredInput.tail<12>()) / time_eps;
 
+    // std::cerr << "      observation.state torso position: " << observation.state.segment<3>(3).transpose() << std::endl;
+    // std::cerr << "      desiredState torso position: " << desiredState.segment<3>(3).transpose() << std::endl;
+
     auto commandMessage = wbcPtr_->getCommandMessage(tNow_, observation.state, observation.input, observation.mode,
                                                      desiredState, desiredInput, desiredMode, joint_accelerations);
 
@@ -104,11 +112,15 @@ tbai_msgs::JointCommandArray MpcController::getCommandMessage(scalar_t currentTi
     return commandMessage;
 }
 
-void MpcController::referenceThread() {
+void MpcController::referenceThread() 
+{
+    std::cerr << "MpcController::referenceThread" << std::endl;
+    
     referenceTrajectoryGeneratorPtr_->reset();
 
     // Wait for initial mpc observation
-    while (ros::ok() && !stopReferenceThread_) {
+    while (ros::ok() && !stopReferenceThread_) 
+    {
         spinOnceReferenceThread();
         if (referenceTrajectoryGeneratorPtr_->isInitialized()) break;
         ros::Duration(0.02).sleep();
@@ -116,7 +128,8 @@ void MpcController::referenceThread() {
 
     // Start reference thread
     ros::Rate rate(5.0);
-    while (ros::ok() && !stopReferenceThread_) {
+    while (ros::ok() && !stopReferenceThread_) 
+    {
         spinOnceReferenceThread();
         ROS_INFO_STREAM_THROTTLE(5.0, "[MpcController] Publishing reference");
         referenceTrajectoryGeneratorPtr_->publishReferenceTrajectory();
@@ -144,7 +157,10 @@ void MpcController::visualize() {
     }
 }
 
-void MpcController::changeController(const std::string &controllerType, scalar_t currentTime) {
+void MpcController::changeController(const std::string &controllerType, scalar_t currentTime) 
+{
+    std::cerr << "[MpcController] changeController: " << controllerType << std::endl;
+
     if (!mrt_initialized_ || currentTime + 0.1 > mrt_.getPolicy().timeTrajectory_.back()) {
         resetMpc();
         mrt_initialized_ = true;
@@ -155,7 +171,10 @@ void MpcController::changeController(const std::string &controllerType, scalar_t
     startReferenceThread();
 }
 
-void MpcController::startReferenceThread() {
+void MpcController::startReferenceThread() 
+{
+    std::cerr << "[MpcController] startReferenceThread" << std::endl;
+
     // Start reference thread
     if (referenceThread_.joinable()) {
         referenceThread_.join();

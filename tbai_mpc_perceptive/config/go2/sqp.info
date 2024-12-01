@@ -13,6 +13,6 @@ multiple_shooting
   printLinesearch                       false
   useFeedbackPolicy                     true
   integratorType                        RK2
-  nThreads                              3
+  nThreads                              4
   threadPriority                        50
 }

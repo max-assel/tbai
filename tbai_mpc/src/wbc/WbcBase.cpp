@@ -179,7 +179,22 @@ Task WbcBase::createBaseAccelerationTask(const vector_t &stateCurrent, const vec
         basePose, baseVelocity, jointPositions, jointVelocities, jointAccelerations, forcesOnBaseInBaseFrame);
 
     /* Base position error */
+    // std::cerr << "rDesired_: " << rDesired_.transpose() << std::endl;
+    // std::cerr << "desiredBasePosition: " << basePose.tail<3>().transpose() << std::endl;
+    // std::cerr << "rMeasured_: " << rMeasured_.transpose() << std::endl;
+    // std::cerr << "measuredBasePosition: " << qMeasured_.head<3>().transpose() << std::endl;
+
+    // if (basePose.tail<3>()[0] < qMeasured_.head<3>()[0]) {
+    //     baseXCounter_ += 1;    
+    // }
+    // totalCounter += 1;
+
+    // std::cerr << "baseXCounter_: " << baseXCounter_ << ", totalCounter: " << totalCounter << ", percentage: " << (baseXCounter_ / totalCounter) << std::endl;
+
     auto positionError = rDesired_.transpose() * basePose.tail<3>() - rMeasured_.transpose() * qMeasured_.head<3>();
+
+    // std::cerr << "desiredBaseVelocity: " << stateDesired.segment<3>(9).transpose() << std::endl;
+    // std::cerr << "measuredBaseVelocity: " << stateCurrent.segment<3>(9).transpose() << std::endl;
 
     /* Base linear velocity error */
     auto v_error = stateDesired.segment<3>(9) - stateCurrent.segment<3>(9);

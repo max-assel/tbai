@@ -241,9 +241,9 @@ tracking_cost_weights
     roll                   100.0;
     pitch                  300.0;
     yaw                    300.0;
-    base_position_x       1500.0;
-    base_position_y       1000.0;
-    base_position_z       1500.0;
+    base_position_x       15000.0;
+    base_position_y       10000.0;
+    base_position_z       15000.0;
     base_angular_vel_x      10.0;
     base_angular_vel_y      30.0;
     base_angular_vel_z      30.0;

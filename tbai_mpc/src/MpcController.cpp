@@ -89,6 +89,8 @@ tbai_msgs::JointCommandArray MpcController::getCommandMessage(scalar_t currentTi
     size_t desiredMode;
     mrt_.evaluatePolicy(tNow_, observation.state, desiredState, desiredInput, desiredMode);
 
+    // desiredState[3] += 0.001;
+
     constexpr ocs2::scalar_t time_eps = 1e-4;
     ocs2::vector_t dummyState;
     ocs2::vector_t dummyInput;

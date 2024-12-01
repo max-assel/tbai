@@ -99,6 +99,9 @@ class WbcBase {
     contact_flag_t contactFlags_;
     size_t nContacts_;
 
+        scalar_t baseXCounter_ = 0;
+        scalar_t totalCounter = 0;
+
    private:
     void loadSettings(const std::string &configFile, const std::string &configPrefix);
     void generateFrictionConeMatrix(const scalar_t mu);

@@ -16,6 +16,12 @@ tbai_msgs::JointCommandArray SqpWbc::getCommandMessage(scalar_t currentTime, con
                                                        const size_t desiredMode,
                                                        const vector_t &desiredJointAcceleration) 
 {
+    // std::cerr << "[SqpWbc::getCommandMessage]" << std::endl;
+
+    // std::cerr << "          weightBaseAcceleration_: " << weightBaseAcceleration_ << std::endl;
+    // std::cerr << "          weightContactForce_: " << weightContactForce_ << std::endl;
+    // std::cerr << "          weightSwingLeg_: " << weightSwingLeg_ << std::endl;
+
     // Update state information
     updateContactFlags(currentMode, desiredMode);
     updateMeasuredState(currentState, currentInput.tail<12>());

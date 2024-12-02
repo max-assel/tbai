@@ -3,7 +3,7 @@
     <!-- Required arguments -->
     <arg name="controllers_ns"      default="anymal_d"/>
     <arg name="controllers_args"    default="joint_controller"/>
-    <arg name="task_folder"         default="$(find tbai_dtc)/config/dtc/go2"/>
+    <arg name="task_folder"         default="$(find tbai_dtc)/config/dtc/anymal"/>
     <arg name="tbai_config_path"    default="$(arg task_folder)/default_config.yaml"/>
     <arg name="description_name"    default="robot_description"/>
     <arg name="description_file"    default="$(find tbai_description)/urdf/anymal_d_gazebo.urdf.xacro"/>

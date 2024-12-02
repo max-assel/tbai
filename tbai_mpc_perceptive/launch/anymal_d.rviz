@@ -7,6 +7,7 @@ Panels:
         - /Global Options1
         - /Status1
         - /Grid1
+        - /MarkerArray1
       Splitter Ratio: 0.5
     Tree Height: 778
   - Class: rviz/Selection
@@ -33,7 +34,7 @@ Panels:
     Property Tree Widget:
       Expanded: ~
       Splitter Ratio: 0.5
-    Tree Height: 141
+    Tree Height: 371
 Preferences:
   PromptSaveOnExit: true
 Toolbars:
@@ -506,7 +507,7 @@ Visualization Manager:
       Color Layer: elevation
       Color Transformer: GridMapLayer
       ColorMap: default
-      Enabled: true
+      Enabled: false
       Grid Cell Decimation: 1
       Grid Line Thickness: 0.10000000149011612
       Height Layer: elevation
@@ -522,6 +523,14 @@ Visualization Manager:
       Topic: /convex_plane_decomposition_ros/filtered_map
       Unreliable: false
       Use ColorMap: true
+      Value: false
+    - Class: rviz/MarkerArray
+      Enabled: true
+      Marker Topic: /convex_plane_decomposition_ros/boundaries
+      Name: MarkerArray
+      Namespaces:
+        "": true
+      Queue Size: 100
       Value: true
   Enabled: true
   Global Options:
@@ -551,7 +560,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 6.916014194488525
+      Distance: 6.053210735321045
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -559,17 +568,17 @@ Visualization Manager:
         Value: false
       Field of View: 0.7853981852531433
       Focal Point:
-        X: 0.5275025367736816
-        Y: 1.232101559638977
-        Z: 1.1866217851638794
+        X: -4.59910774230957
+        Y: 0.3680477738380432
+        Z: 0.6678034663200378
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.10539830476045609
+      Pitch: 0.9253979325294495
       Target Frame: <Fixed Frame>
-      Yaw: 5.558566570281982
+      Yaw: 1.7435672283172607
     Saved: ~
 Window Geometry:
   Displays:

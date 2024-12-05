@@ -8,21 +8,24 @@ model_settings
 
   frictionCoefficient           0.5
   gripperForce                  0.0   ; [N] negative gripper force -> minimum force in normal direction
-  muFrictionCone                0.1
+  
+  muFrictionCone                10.0 ; 0.1
   deltaFrictionCone             5.0
 
-  muFootPlacement               0.1   ; magnitude scaling
-  deltaFootPlacement            0.01  ; [m] distance from constraint boundary where the barrier becomes quadratic.
+  muFootPlacement               0.0 ; 0.1   ; magnitude scaling
+  deltaFootPlacement            0.0 ; 0.01  ; [m] distance from constraint boundary where the barrier becomes quadratic.
 
-  muSdf                         0.1
-  deltaSdf                      0.005
+  muSdf                         0.0 ; 0.1
+  deltaSdf                      0.0 ; 0.005
 
-  muJointsPosition              0.1
-  deltaJointsPosition           0.01
-  muJointsVelocity              0.1
-  deltaJointsVelocity           0.1
-  muJointsTorque                1.0
-  deltaJointsTorque             1.0
+  muJointsPosition              0.1 ; joint position limits 
+  deltaJointsPosition           0.01 ; joint position limits
+
+  muJointsVelocity              0.1 ; joint velocity limits
+  deltaJointsVelocity           0.1 ; joint velocity limits
+  
+  muJointsTorque                1.0 ; joint torque limits
+  deltaJointsTorque             1.0 ; joint torque limits
 
   joint_lower_limits
   {
@@ -55,6 +58,7 @@ model_settings
      (10,0)  4.5379     ; RH_HFE
      (11,0)  -0.8377    ; RH_KFE
   }
+
 
   joint_velocity_limits
   {
@@ -231,19 +235,19 @@ initialRobotState
    (19,0)   0.72;    LH_HFE
    (20,0)  -1.44;    LH_KFE
    (21,0)   0.0;    RH_HAA
-   (22,0)  0.72;    RH_HFE
-   (23,0) -1.44;    RH_KFE
+   (22,0)   0.72;    RH_HFE
+   (23,0)  -1.44;    RH_KFE
 }
 
 tracking_cost_weights
 {
     ; Base
-    roll                   300.0;
+    roll                   100.0;
     pitch                  300.0;
     yaw                    300.0;
-    base_position_x     150000.0; 1000.0;
-    base_position_y       1000.0; 1000.0;
-    base_position_z       1500.0; 1500.0;
+    base_position_x       1000.0; 150000.0; 
+    base_position_y       1000.0; 1000.0; 
+    base_position_z       1500.0; 1500.0; 
     base_angular_vel_x      10.0;
     base_angular_vel_y      30.0;
     base_angular_vel_z      30.0;

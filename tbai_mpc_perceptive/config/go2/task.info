@@ -242,32 +242,39 @@ initialRobotState
 tracking_cost_weights
 {
     ; Base
-    roll                   100.0;
-    pitch                  300.0;
-    yaw                    300.0;
-    base_position_x       1000.0; 150000.0; 
-    base_position_y       1000.0; 1000.0; 
-    base_position_z       1500.0; 1500.0; 
-    base_angular_vel_x      10.0;
-    base_angular_vel_y      30.0;
-    base_angular_vel_z      30.0;
-    base_linear_vel_x       15.0;
-    base_linear_vel_y       15.0;
-    base_linear_vel_z       30.0;
+    roll                   200.0;           100.0;
+    pitch                  200.0;           300.0;
+    yaw                    100.0;           300.0;
+
+    base_position_x        500.0;           1000.0;
+    base_position_y        500.0;           1000.0;
+    base_position_z        500.0;           1500.0;
+
+    base_angular_vel_x     10.0;             10.0;
+    base_angular_vel_y     10.0;            30.0;
+    base_angular_vel_z     5.0;            30.0;
+
+    base_linear_vel_x      15.0;
+    base_linear_vel_y      15.0;
+    base_linear_vel_z      30.0;
 
     ; Per leg
     joint_position_HAA       2.0;
     joint_position_HFE       2.0;
     joint_position_KFE       1.0;
+
     foot_position_x         20.0;
     foot_position_y         20.0;
     foot_position_z         20.0;
+
     joint_velocity_HAA      0.02;
     joint_velocity_HFE      0.02;
     joint_velocity_KFE      0.01;
-    foot_velocity_x         30.0;
-    foot_velocity_y         30.0;
-    foot_velocity_z         30.0;
+
+    foot_velocity_x         5.0 ; 30.0;
+    foot_velocity_y         5.0 ; 30.0;
+    foot_velocity_z         5.0 ; 30.0;
+    
     contact_force_x        0.001;
     contact_force_y        0.001;
     contact_force_z        0.001;

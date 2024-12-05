@@ -9,23 +9,23 @@ sqpWbc
   frictionCoefficient     0.5
 
   ; Swing leg kp and kd (in cartesian space - ee tracking)
-  swingKp                 550.0
-  swingKd                 50.0
+  swingKp                 370.0 ; 550.0
+  swingKd                 37.0 ; 50.0
 
   ; Base position kp and kd 
-  baseKp                  550.0
-  baseKd                  50.0
+  baseKp                  370.0 ; 550.0
+  baseKd                  37.0 ; 50.0
 
   ; Base orientation kp and kd
-  eulerKp                 0.0
-  eulerKd                 0.1
+  eulerKp                 370.0 ; 0.0
+  eulerKd                 37.0 ; 0.1
 
   ; Joint swing leg kp and kd
-  jointSwingKp            5.0 ; 50.0
+  jointSwingKp            3.0 ; 50.0
   jointSwingKd            2.0 ; 5.0
 
   ; Joint stance leg kp and kd
-  jointStanceKp            5.0 ; 50.0
+  jointStanceKp            3.0 ; 50.0
   jointStanceKd            2.0 ; 5.2
 
   ; Joint torque limit

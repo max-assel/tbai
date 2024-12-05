@@ -75,64 +75,64 @@ void MpcController::spinOnceReferenceThread() {
 
 tbai_msgs::JointCommandArray MpcController::getCommandMessage(scalar_t currentTime, scalar_t dt) 
 {
-    std::cerr << "[MpcController] getCommandMessage" << std::endl;
+    // std::cerr << "[MpcController] getCommandMessage" << std::endl;
 
     mrt_.spinMRT();
     mrt_.updatePolicy();
 
     tNow_ = ros::Time::now().toSec() - initTime_;
 
-    std::cerr << "  tNow_: " << tNow_ << std::endl;
+    // std::cerr << "  tNow_: " << tNow_ << std::endl;
 
     auto observation = generateSystemObservation();
 
-    std::cerr << "  observation: " << std::endl;
-    std::cerr << "   time: " << observation.time << std::endl;
-    std::cerr << "   mode: " << observation.mode << std::endl;
-    std::cerr << "   state: " << std::endl;
-    std::cerr << "     torso orientation: " << observation.state.segment(0,3).transpose() << "\n" << std::endl;
-    std::cerr << "     torso position:    " << observation.state.segment(3,3).transpose() << "\n" << std::endl;
-    std::cerr << "     torso angular vel: " << observation.state.segment(6,3).transpose() << "\n" << std::endl;
-    std::cerr << "     torso linear vel:  " << observation.state.segment(9,3).transpose() << "\n" << std::endl;
-    std::cerr << "     leg 0 joint pos:   " << observation.state.segment(12,3).transpose() << "\n" << std::endl;
-    std::cerr << "     leg 1 joint pos:   " << observation.state.segment(15,3).transpose() << "\n" << std::endl;
-    std::cerr << "     leg 2 joint pos:   " << observation.state.segment(18,3).transpose() << "\n" << std::endl;
-    std::cerr << "     leg 3 joint pos:   " << observation.state.segment(21,3).transpose() << "\n" << std::endl;
-    std::cerr << "   input: " << std::endl;
-    std::cerr << "     leg 0 contact force: " << observation.input.segment(0,3).transpose() << "\n" << std::endl;
-    std::cerr << "     leg 1 contact force: " << observation.input.segment(3,3).transpose() << "\n" << std::endl;
-    std::cerr << "     leg 2 contact force: " << observation.input.segment(6,3).transpose() << "\n" << std::endl;
-    std::cerr << "     leg 3 contact force: " << observation.input.segment(9,3).transpose() << "\n" << std::endl;
-    std::cerr << "     leg 0 foot vel:      " << observation.input.segment(12,3).transpose() << "\n" << std::endl;
-    std::cerr << "     leg 1 foot vel:      " << observation.input.segment(15,3).transpose() << "\n" << std::endl;
-    std::cerr << "     leg 2 foot vel:      " << observation.input.segment(18,3).transpose() << "\n" << std::endl;
-    std::cerr << "     leg 3 foot vel:      " << observation.input.segment(21,3).transpose() << "\n" << std::endl;
+    // std::cerr << "  observation: " << std::endl;
+    // std::cerr << "   time: " << observation.time << std::endl;
+    // std::cerr << "   mode: " << observation.mode << std::endl;
+    // std::cerr << "   state: " << std::endl;
+    // std::cerr << "     torso orientation: " << observation.state.segment(0,3).transpose() << "\n" << std::endl;
+    // std::cerr << "     torso position:    " << observation.state.segment(3,3).transpose() << "\n" << std::endl;
+    // std::cerr << "     torso angular vel: " << observation.state.segment(6,3).transpose() << "\n" << std::endl;
+    // std::cerr << "     torso linear vel:  " << observation.state.segment(9,3).transpose() << "\n" << std::endl;
+    // std::cerr << "     leg 0 joint pos:   " << observation.state.segment(12,3).transpose() << "\n" << std::endl;
+    // std::cerr << "     leg 1 joint pos:   " << observation.state.segment(15,3).transpose() << "\n" << std::endl;
+    // std::cerr << "     leg 2 joint pos:   " << observation.state.segment(18,3).transpose() << "\n" << std::endl;
+    // std::cerr << "     leg 3 joint pos:   " << observation.state.segment(21,3).transpose() << "\n" << std::endl;
+    // std::cerr << "   input: " << std::endl;
+    // std::cerr << "     leg 0 contact force: " << observation.input.segment(0,3).transpose() << "\n" << std::endl;
+    // std::cerr << "     leg 1 contact force: " << observation.input.segment(3,3).transpose() << "\n" << std::endl;
+    // std::cerr << "     leg 2 contact force: " << observation.input.segment(6,3).transpose() << "\n" << std::endl;
+    // std::cerr << "     leg 3 contact force: " << observation.input.segment(9,3).transpose() << "\n" << std::endl;
+    // std::cerr << "     leg 0 foot vel:      " << observation.input.segment(12,3).transpose() << "\n" << std::endl;
+    // std::cerr << "     leg 1 foot vel:      " << observation.input.segment(15,3).transpose() << "\n" << std::endl;
+    // std::cerr << "     leg 2 foot vel:      " << observation.input.segment(18,3).transpose() << "\n" << std::endl;
+    // std::cerr << "     leg 3 foot vel:      " << observation.input.segment(21,3).transpose() << "\n" << std::endl;
 
     ocs2::vector_t desiredState;
     ocs2::vector_t desiredInput;
     size_t desiredMode;
     mrt_.evaluatePolicy(tNow_, observation.state, desiredState, desiredInput, desiredMode);
 
-    std::cerr << "  desired: " << std::endl;
-    std::cerr << "   mode: " << desiredMode << std::endl;
-    std::cerr << "   state: " << std::endl;
-    std::cerr << "     torso orientation: " << desiredState.segment(0,3).transpose() << "\n" << std::endl;
-    std::cerr << "     torso position:    " << desiredState.segment(3,3).transpose() << "\n" << std::endl;
-    std::cerr << "     torso angular vel: " << desiredState.segment(6,3).transpose() << "\n" << std::endl;
-    std::cerr << "     torso linear vel:  " << desiredState.segment(9,3).transpose() << "\n" << std::endl;
-    std::cerr << "     leg 0 joint pos:   " << desiredState.segment(12,3).transpose() << "\n" << std::endl;
-    std::cerr << "     leg 1 joint pos:   " << desiredState.segment(15,3).transpose() << "\n" << std::endl;
-    std::cerr << "     leg 2 joint pos:   " << desiredState.segment(18,3).transpose() << "\n" << std::endl;
-    std::cerr << "     leg 3 joint pos:   " << desiredState.segment(21,3).transpose() << "\n" << std::endl;
-    std::cerr << "   input: " << std::endl;
-    std::cerr << "     leg 0 contact force: " << desiredInput.segment(0,3).transpose() << "\n" << std::endl;
-    std::cerr << "     leg 1 contact force: " << desiredInput.segment(3,3).transpose() << "\n" << std::endl;
-    std::cerr << "     leg 2 contact force: " << desiredInput.segment(6,3).transpose() << "\n" << std::endl;
-    std::cerr << "     leg 3 contact force: " << desiredInput.segment(9,3).transpose() << "\n" << std::endl;
-    std::cerr << "     leg 0 foot vel:      " << desiredInput.segment(12,3).transpose() << "\n" << std::endl;
-    std::cerr << "     leg 1 foot vel:      " << desiredInput.segment(15,3).transpose() << "\n" << std::endl;
-    std::cerr << "     leg 2 foot vel:      " << desiredInput.segment(18,3).transpose() << "\n" << std::endl;
-    std::cerr << "     leg 3 foot vel:      " << desiredInput.segment(21,3).transpose() << "\n" << std::endl;
+    // std::cerr << "  desired: " << std::endl;
+    // std::cerr << "   mode: " << desiredMode << std::endl;
+    // std::cerr << "   state: " << std::endl;
+    // std::cerr << "     torso orientation: " << desiredState.segment(0,3).transpose() << "\n" << std::endl;
+    // std::cerr << "     torso position:    " << desiredState.segment(3,3).transpose() << "\n" << std::endl;
+    // std::cerr << "     torso angular vel: " << desiredState.segment(6,3).transpose() << "\n" << std::endl;
+    // std::cerr << "     torso linear vel:  " << desiredState.segment(9,3).transpose() << "\n" << std::endl;
+    // std::cerr << "     leg 0 joint pos:   " << desiredState.segment(12,3).transpose() << "\n" << std::endl;
+    // std::cerr << "     leg 1 joint pos:   " << desiredState.segment(15,3).transpose() << "\n" << std::endl;
+    // std::cerr << "     leg 2 joint pos:   " << desiredState.segment(18,3).transpose() << "\n" << std::endl;
+    // std::cerr << "     leg 3 joint pos:   " << desiredState.segment(21,3).transpose() << "\n" << std::endl;
+    // std::cerr << "   input: " << std::endl;
+    // std::cerr << "     leg 0 contact force: " << desiredInput.segment(0,3).transpose() << "\n" << std::endl;
+    // std::cerr << "     leg 1 contact force: " << desiredInput.segment(3,3).transpose() << "\n" << std::endl;
+    // std::cerr << "     leg 2 contact force: " << desiredInput.segment(6,3).transpose() << "\n" << std::endl;
+    // std::cerr << "     leg 3 contact force: " << desiredInput.segment(9,3).transpose() << "\n" << std::endl;
+    // std::cerr << "     leg 0 foot vel:      " << desiredInput.segment(12,3).transpose() << "\n" << std::endl;
+    // std::cerr << "     leg 1 foot vel:      " << desiredInput.segment(15,3).transpose() << "\n" << std::endl;
+    // std::cerr << "     leg 2 foot vel:      " << desiredInput.segment(18,3).transpose() << "\n" << std::endl;
+    // std::cerr << "     leg 3 foot vel:      " << desiredInput.segment(21,3).transpose() << "\n" << std::endl;
 
     constexpr ocs2::scalar_t time_eps = 1e-4;
     ocs2::vector_t dummyState;
@@ -142,22 +142,22 @@ tbai_msgs::JointCommandArray MpcController::getCommandMessage(scalar_t currentTi
 
     ocs2::vector_t joint_accelerations = (dummyInput.tail<12>() - desiredInput.tail<12>()) / time_eps;
 
-    std::cerr << "  joint accelerations: \n" << std::endl;
-    for (int i = 0; i < 12; i++)
-        std::cerr << "   joint " << i << " acceleration: " << joint_accelerations[i] << "\n" << std::endl;
+    // std::cerr << "  joint accelerations: \n" << std::endl;
+    // for (int i = 0; i < 12; i++)
+    //     std::cerr << "   joint " << i << " acceleration: " << joint_accelerations[i] << "\n" << std::endl;
 
     auto commandMessage = wbcPtr_->getCommandMessage(tNow_, observation.state, observation.input, observation.mode,
                                                      desiredState, desiredInput, desiredMode, joint_accelerations);
 
-    for (int i = 0; i < commandMessage.joint_commands.size(); i++)
-    {
-        std::cerr << "joint: " << commandMessage.joint_commands[i].joint_name << std::endl;
-        std::cerr << "     desired position: " << commandMessage.joint_commands[i].desired_position << std::endl;
-        std::cerr << "     desired velocity: " << commandMessage.joint_commands[i].desired_velocity << std::endl;
-        std::cerr << "     kp:               " << commandMessage.joint_commands[i].kp << std::endl;
-        std::cerr << "     kd:               " << commandMessage.joint_commands[i].kd << std::endl;
-        std::cerr << "     torque_ff:        " << commandMessage.joint_commands[i].torque_ff << std::endl;
-    }
+    // for (int i = 0; i < commandMessage.joint_commands.size(); i++)
+    // {
+    //     std::cerr << "joint: " << commandMessage.joint_commands[i].joint_name << std::endl;
+    //     std::cerr << "     desired position: " << commandMessage.joint_commands[i].desired_position << std::endl;
+    //     std::cerr << "     desired velocity: " << commandMessage.joint_commands[i].desired_velocity << std::endl;
+    //     std::cerr << "     kp:               " << commandMessage.joint_commands[i].kp << std::endl;
+    //     std::cerr << "     kd:               " << commandMessage.joint_commands[i].kd << std::endl;
+    //     std::cerr << "     torque_ff:        " << commandMessage.joint_commands[i].torque_ff << std::endl;
+    // }
 
     timeSinceLastMpcUpdate_ += dt;
     timeSinceLastVisualizationUpdate_ += dt;
@@ -172,7 +172,7 @@ tbai_msgs::JointCommandArray MpcController::getCommandMessage(scalar_t currentTi
 
 void MpcController::referenceThread() 
 {
-    std::cerr << "MpcController::referenceThread" << std::endl;
+    // std::cerr << "MpcController::referenceThread" << std::endl;
     
     referenceTrajectoryGeneratorPtr_->reset();
 
@@ -217,7 +217,7 @@ void MpcController::visualize() {
 
 void MpcController::changeController(const std::string &controllerType, scalar_t currentTime) 
 {
-    std::cerr << "[MpcController] changeController: " << controllerType << std::endl;
+    // std::cerr << "[MpcController] changeController: " << controllerType << std::endl;
 
     if (!mrt_initialized_ || currentTime + 0.1 > mrt_.getPolicy().timeTrajectory_.back()) {
         resetMpc();
@@ -231,7 +231,7 @@ void MpcController::changeController(const std::string &controllerType, scalar_t
 
 void MpcController::startReferenceThread() 
 {
-    std::cerr << "[MpcController] startReferenceThread" << std::endl;
+    // std::cerr << "[MpcController] startReferenceThread" << std::endl;
 
     // Start reference thread
     if (referenceThread_.joinable()) {

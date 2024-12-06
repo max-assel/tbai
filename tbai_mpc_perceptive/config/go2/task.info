@@ -12,8 +12,8 @@ model_settings
   muFrictionCone                10.0 ; 0.1
   deltaFrictionCone             5.0
 
-  muFootPlacement               0.0 ; 0.1   ; magnitude scaling
-  deltaFootPlacement            0.0 ; 0.01  ; [m] distance from constraint boundary where the barrier becomes quadratic.
+  muFootPlacement               0.1   ; magnitude scaling
+  deltaFootPlacement            0.01  ; [m] distance from constraint boundary where the barrier becomes quadratic.
 
   muSdf                         0.0 ; 0.1
   deltaSdf                      0.0 ; 0.005

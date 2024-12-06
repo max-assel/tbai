@@ -104,10 +104,10 @@ tbai_msgs::JointCommandArray MpcController::getCommandMessage(scalar_t currentTi
     std::cerr << "      RF contact force: " << observation.input.segment(3,3).transpose() << "\n" << std::endl;
     std::cerr << "      LH contact force: " << observation.input.segment(6,3).transpose() << "\n" << std::endl;
     std::cerr << "      RH contact force: " << observation.input.segment(9,3).transpose() << "\n" << std::endl;
-    std::cerr << "      LF foot vel:      " << observation.input.segment(12,3).transpose() << "\n" << std::endl;
-    std::cerr << "      RF foot vel:      " << observation.input.segment(15,3).transpose() << "\n" << std::endl;
-    std::cerr << "      LH foot vel:      " << observation.input.segment(18,3).transpose() << "\n" << std::endl;
-    std::cerr << "      RH foot vel:      " << observation.input.segment(21,3).transpose() << "\n" << std::endl;
+    std::cerr << "      LF joint vel:     " << observation.input.segment(12,3).transpose() << "\n" << std::endl;
+    std::cerr << "      RF joint vel:     " << observation.input.segment(15,3).transpose() << "\n" << std::endl;
+    std::cerr << "      LH joint vel:     " << observation.input.segment(18,3).transpose() << "\n" << std::endl;
+    std::cerr << "      RH joint vel:     " << observation.input.segment(21,3).transpose() << "\n" << std::endl;
 
     ocs2::vector_t desiredState;
     ocs2::vector_t desiredInput;
@@ -130,10 +130,10 @@ tbai_msgs::JointCommandArray MpcController::getCommandMessage(scalar_t currentTi
     std::cerr << "      RF contact force:  " << desiredInput.segment(3,3).transpose() << "\n" << std::endl;
     std::cerr << "      LH contact force:  " << desiredInput.segment(6,3).transpose() << "\n" << std::endl;
     std::cerr << "      RH contact force:  " << desiredInput.segment(9,3).transpose() << "\n" << std::endl;
-    std::cerr << "      LF foot vel:       " << desiredInput.segment(12,3).transpose() << "\n" << std::endl;
-    std::cerr << "      RF foot vel:       " << desiredInput.segment(15,3).transpose() << "\n" << std::endl;
-    std::cerr << "      LH foot vel:       " << desiredInput.segment(18,3).transpose() << "\n" << std::endl;
-    std::cerr << "      RH foot vel:       " << desiredInput.segment(21,3).transpose() << "\n" << std::endl;
+    std::cerr << "      LF joint vel:      " << desiredInput.segment(12,3).transpose() << "\n" << std::endl;
+    std::cerr << "      RF joint vel:      " << desiredInput.segment(15,3).transpose() << "\n" << std::endl;
+    std::cerr << "      LH joint vel:      " << desiredInput.segment(18,3).transpose() << "\n" << std::endl;
+    std::cerr << "      RH joint vel:      " << desiredInput.segment(21,3).transpose() << "\n" << std::endl;
 
     constexpr ocs2::scalar_t time_eps = 1e-4;
     ocs2::vector_t dummyState;
@@ -147,10 +147,10 @@ tbai_msgs::JointCommandArray MpcController::getCommandMessage(scalar_t currentTi
     std::cerr << "      RF contact force: " << desiredInput.segment(3,3).transpose() << "\n" << std::endl;
     std::cerr << "      LH contact force: " << desiredInput.segment(6,3).transpose() << "\n" << std::endl;
     std::cerr << "      RH contact force: " << desiredInput.segment(9,3).transpose() << "\n" << std::endl;
-    std::cerr << "      LF foot vel:      " << desiredInput.segment(12,3).transpose() << "\n" << std::endl;
-    std::cerr << "      RF foot vel:      " << desiredInput.segment(15,3).transpose() << "\n" << std::endl;
-    std::cerr << "      LH foot vel:      " << desiredInput.segment(18,3).transpose() << "\n" << std::endl;
-    std::cerr << "      RH foot vel:      " << desiredInput.segment(21,3).transpose() << "\n" << std::endl;
+    std::cerr << "      LF joint vel:     " << desiredInput.segment(12,3).transpose() << "\n" << std::endl;
+    std::cerr << "      RF joint vel:     " << desiredInput.segment(15,3).transpose() << "\n" << std::endl;
+    std::cerr << "      LH joint vel:     " << desiredInput.segment(18,3).transpose() << "\n" << std::endl;
+    std::cerr << "      RH joint vel:     " << desiredInput.segment(21,3).transpose() << "\n" << std::endl;
 
     ocs2::vector_t joint_accelerations = (dummyInput.tail<12>() - desiredInput.tail<12>()) / time_eps;
 

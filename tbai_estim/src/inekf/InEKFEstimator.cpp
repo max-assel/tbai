@@ -38,7 +38,7 @@ InEKFEstimator::InEKFEstimator(std::vector<std::string> footNames, const std::st
     ::inekf::RobotState init_state;
     init_state.setRotation(Eigen::Matrix3d::Identity());
     init_state.setVelocity(Eigen::Vector3d::Zero());
-    init_state.setPosition(Eigen::Vector3d(0.0, 0.0, 0.35));
+    init_state.setPosition(Eigen::Vector3d(0.0, 0.0, 0.57));
     init_state.setGyroscopeBias(Eigen::Vector3d(0.003, 0.0, -0.007));
     init_state.setAccelerometerBias(Eigen::Vector3d(-0.08, 0.05, 0.3));
     init_state.setP(P_init);
